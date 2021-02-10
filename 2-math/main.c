@@ -4,42 +4,42 @@ int
 main (int argc, char **argv)
 {
   //Initialise variables
-  double x, y;
+  double x, y, zero;
   complex z, zz;
 
 /* Exercise 1: Mathematical functions */
-  // Exercise 1.1: True gamma function
-  x = 5;
-  y = tgamma(x);
-  printf("Exercise 1.1: True gamma function; gamma(%lg) = %lg\n", x, y);
+  printf("Exercise 1: Evaluate following mathematical functions\n");
 
-  // Exercise 1.2: Bessel function
+  printf("%-20s %32s %32s\n", "Function", "Argument", "Value");
+  printf("%-32s %16s\|%-16s %16s\|%-16s\n", "", "Real", "Imag", "Real", "Imag");
+
+  x = 5; zero = 0;
+  y = tgamma(x);
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg \n", "True gamma (tgamma)", x, zero , y, zero);
+
   x = 0.5;
   y = j1(x);
-  printf("Exercise 1.2: Bessel function of first kind; j1(%lg) = %lg\n", x, y);
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Bessel 1st kind 1st order (j1) ", x, zero , y, zero);
 
-  // Exercise 1.3: Complex square root function
   x = -2;
   z = csqrt(x);
-  printf("Exercise 1.3: The complex square root; sqrt(%lg) = %lg + i %lg\n", x, creal(z), cimag(z));
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex square root", x, zero, creal(z), cimag(z));
 
-  // Exercise 1.4: Complex exponential function
   z = I*M_PI;
   zz = cexp(z);
-  printf("Exercise 1.4: The complex exponential; exp(%lg+i%lg) = %lg + i %lg\n", creal(z), cimag(z), creal(zz), cimag(zz));
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
 
-  // Exercise 1.5: Complex exponential function
   z = I;
   zz = cexp(z);
-  printf("Exercise 1.5: The complex exponential; exp(%lg+i%lg) = %lg = i %lg\n", creal(z), cimag(z), creal(zz), cimag(zz));
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
 
-  // Exercise 1.6: Complex power function
   zz = cpow(z, M_E);
-  printf("Exercise 1.6: The complex power; cpow(%lg+i%lg, %lg) = %lg = i %lg\n", creal(z), cimag(z), M_E, creal(zz), cimag(zz));
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex power (base i)", M_E, zero, creal(zz), cimag(zz));
 
-  // Exercise 1.7: Complex power function
   zz = cpow(z, z);
-  printf("Exercise 1.7: The complex power; cpow(%lg+i%lg, %lg+i%lg) = %lg = i %lg\n", creal(z), cimag(z), creal(z), cimag(z), creal(zz), cimag(zz));
+  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex power (base i)", creal(I), cimag(I), creal(zz), cimag(zz));
+
+  printf("\n");
 
 /* Exercise 2: Significant digits */
   float x_g;
