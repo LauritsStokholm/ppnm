@@ -1,0 +1,20 @@
+Calculate, using mathematical functions form <math.h> and <cmath.h> (or <tgmath.h>); :
+Gamma function gamma(5). Hint: man -k gamma.
+Bessel function J1(0.5). Hint: man -k bessel.
+sqrt(-2), exp(ipi), exp(i), i*e, i*i, and chack that the results are correct.
+
+Hints:
+There is no built-in format for complex numbers, you have to print separately the real and the complex parts using creal, creall, cimag, cimagl functions; read man creal and man cimag.
+The header file complex.h defines the imaginary unit as I.
+In some implementations the header math.h defines M_E (the value of e) and M_PI (the value of π). If not, you can define this constants (in double precision) as
+
+# define M_E  2.7182818284590452354 /* e */
+# define M_PI 3.1415926535897932384 /* pi */
+
+Find out how many signigicant digits can variables of types float, double, and long double hold in them by calculating the ratio 1/9 with the corresponding precision and then printing out the result. Something like
+
+float x_float = 1.f/9;
+double x_double = 1./9;
+long double x_long_double = 1.L/9;
+
+Print these numbers with format placeholders "%.25g" for float, "%.25lg" for double, "%.25Lg" for long double. 

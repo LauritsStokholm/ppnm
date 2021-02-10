@@ -1,0 +1,12 @@
+Exercise 1.1: True gamma function; gamma(5) = 24
+Exercise 1.2: Bessel function of first kind; j1(0.5) = 0.242268
+Exercise 1.3: The complex square root; sqrt(-2) = 0 + i 1.41421
+Exercise 1.4: The complex exponential; exp(0+i3.14159) = -1 + i 1.22465e-16
+Exercise 1.5: The complex exponential; exp(0+i1) = 0.540302 = i 0.841471
+Exercise 1.6: The complex power; cpow(0+i1, 2.71828) = -0.42822 = i -0.903675
+Exercise 1.7: The complex power; cpow(0+i1, 0+i1) = 0.20788 = i 0
+Exercise 2: Here we test the significant digits of variable types
+Float:       0.1111111119389533996582031
+Double:      0.1111111111111111049432054
+Long double: 0.1111111111111111111096053
+              .123456789|123456789|123456789|
