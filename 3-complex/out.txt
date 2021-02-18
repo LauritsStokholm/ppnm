@@ -1,0 +1,72 @@
+We test komplex_print...
+a= (1,2)
+b= (3,4)
+
+We test komplex_set...
+z should= (1,3)
+z actually= (1,3)
+
+We test komplex_new...
+z should= (2,4)
+z actually= (2,4)
+
+We test komplex_add...
+a+b should = (4,6)
+a+b actually = (4,6)
+
+We test komplex_sub...
+a-b should = (-2,-2)
+a-b actually = (-2,-2)
+
+We test komplex_sub_alternative...
+a-b should = (-2,-2)
+a-b actually = (-2,-2)
+
+We test komplex_mul...
+a*b should = (-5,10)
+a*b actually = (-5,10)
+
+We test komplex_conjugate...
+a_conj should = (1,-2)
+a_conj actually= (1,-2)
+b_conj should = (3,-4)
+a_conj actually= (3,-4)
+
+We test komplex_abs...
+abs(a) should=2.23607
+abs(a) actually=2.23607
+abs(b) should=5
+abs(b) actually=5
+
+We test komplex_div...
+a/b should = (0.44,0.08)
+a/b actually = (0.44,0.08)
+b/a should = (2.2,-0.4)
+b/a actually = (2.2,-0.4)
+
+We test komplex_exp...
+exp(a) should= (-1.1312,2.47173)
+exp(a) actually= (-1.1312,2.47173)
+exp(b) should= (-13.1288,-15.2008)
+exp(b) actually= (-13.1288,-15.2008)
+
+We test komplex_sin...
+sin(a) should= (3.16578,1.9596)
+sin(a) actually= (3.16578,1.9596)
+sin(b) should= (3.85374,-27.0168)
+sin(b) actually= (3.85374,-27.0168)
+
+We test komplex_cos...
+cos(a) should= (2.03272,-3.0519)
+cos(a) actually= (2.03272,-3.0519)
+cos(b) should= (-27.0168,-3.85374)
+cos(b) actually= (-27.0349,-3.85115)
+
+We test komplex_sqrt...
+sqrt(a) should= (1.27202,0.786151)
+sqrt(a) actually= (1.27202,0.786151)
+sqrt(b) should= (2,1)
+sqrt(b) actually= (2,1)
+
+We test komplex_equal...
+test 'komplex_equal' passed :) 

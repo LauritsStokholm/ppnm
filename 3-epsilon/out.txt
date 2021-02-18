@@ -1,0 +1,123 @@
+Greatest integer, INT_MAX, by limits.h    2147483647
+Greatest integer, I, by while-loop is:    2147483647
+Greatest integer, J, by do-while-loop is: 2147483647
+Greatest integer, K, by for-loop is:      2147483647
+We can test the succesor function on these suprema
+by adding one to each the of integers
+INT_MAX+1 = -2147483648
+I+1       = -2147483648
+J+1       = -2147483648
+K+1       = -2147483648
+
+
+
+Smallest integer, INT_MIN, by limits.h    -2147483648
+Smallest integer, i, by while-loop is:    -2147483648
+Smallest integer, j, by do-while-loop is: -2147483648
+Smallest integer, k, by for-loop is:      -2147483648
+We can test the inverse succesor function on these suprema
+by subtracting one to each of the integers
+INT_MIN-1 = 2147483647
+i-1       = 2147483647
+j-1       = 2147483647
+k-1       = 2147483647
+Realise, INT_MAX = (2^32)/2 - 1, and INT_MIN = (2^32)/2. This is as expected on a 32-bit signed binary integer.
+
+
+
+FLT_EPSILON calculated
+0.00000012 (while)
+0.00000012 (do-while)
+0.00000012 (for-loop)
+0.00000012 (floats.h)
+
+DBL_EPSILON calculated
+2.220446e-16 (while)
+2.220446e-16 (do-while)
+1.110223e-16 (for-loop)
+2.220446e-16 (floats.h)
+
+LDBL_EPSILON calculated
+1.0842022e-19 (while-loop)
+1.0842022e-19 (do-while-loop)
+2 (for-loop)
+1.0842022e-19 (floats.h)
+
+IF ONE TRIES WITH xn = 10 or xn = 1000, one see the effect on       floating point precision series. They actually do diverge, depending      on summing up or down. Amazing!The calculated series values for the data types float, double and longdouble are :
+Upward Summation
+Floating values:
+15.403683	 (dowhile) 
+15.403683	 (while) 
+15.403683	 (for) 
+Double values:
+20.9662	 (dowhile) 
+20.9662	 (while) 
+20.9662 (for) 
+Long double values:
+20.9662	 (dowhile) 
+20.9662	 (while) 
+20.9662 (for) 
+
+Downward Summation
+Floating values:
+18.807919	 (dowhile) 
+18.807919	 (while) 
+18.807919	 (for) 
+Double values:
+20.9662	 (dowhile) 
+20.9662	 (while) 
+20.9662 (for) 
+Long double values:
+20.9662	 (dowhile) 
+20.9662	 (while) 
+20.9662 (for) 
+We test our equal function:
+To test any equality, we test for the absolute and relative precisions that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2
+We have chosen tau and epsilon of three values (eps_i = tau_i), so:
+tau0=epsilon0=2.22045e-16
+ tau1=epsilon0=1.19209e-07
+ tau2=epsilon0=1
+Which are DBL_EPSILON, FLT_EPSILON and 1
+As test, we the constants; PI, EULERS NUMBER and GRAVITATIONAL ACCELERATION (at earth)
+Where for PI we have PI, PI+DBL_EPSILON and 3
+EULERS_NUMBER (E) we have E, E+DBL_EPSILON and 2
+GRAVITATIONAL CONSTANT (G) we have G, G+DBL_EPSILON and PI*PI
+Let x=3.14159, y=3.14159, z=3
+Is x=y? (by varying precision of 0, 1, 2)
+1
+1
+1
+Is x=z? (by varying precision of 0, 1, 2)
+0
+0
+1
+Let l=2.71828, m=2.71828, k=2
+Is l=m? (by varying precision of 0, 1, 2)
+1
+1
+1
+Is l=k? (by varying precision of 0, 1, 2)
+0
+0
+1
+Let f=9.82, g=10, h=9.8696 
+Is f=g? (by varying precision of 0, 1, 2)
+0
+0
+1
+Is f=h? (by varying precision of 0, 1, 2)
+0
+0
+1
+This is as expected, so we continue..
+zero
+one
+two
+three
+four
+five
+six
+seven
+eigth
+nine
+ten

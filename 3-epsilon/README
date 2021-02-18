@@ -1,0 +1,52 @@
+Exercise "Epsilon"
+
+    The header files limits.h and float.h define certain useful limits.
+        INT_MAX — the maximum representable integer — the largest integer i for which i+1>i holds true.
+
+        Exercise: using the while loop determine your maximum integer and compare it with the value INT_MAX defined in limits.h.
+        Hint: something like
+
+        int i=1; while(i+1>i) {i++;}
+        printf("my max int = %i\n",i);
+
+        You have to compile it with the option -fwrapv. It can take some seconds to calculate. Try use -O compiler option, it might help. On my raspberry-pi it takes 7sec with -O option and 26sec without.
+
+        Now do the same with the for loop and do while loop.
+        INT_MIN — the minimum representable integer — the most negative integer i for which i-1<i holds true. Exercise: using the while loop determine your minimum integer and compare with the value INT_MIN defined in limits.h. Do the same using the for loop and do while loop.
+        The machine epsilon is the difference between 1.0 and the next representable floating point number. Using the while loop calculate the machine epsilon for types float, double, and long double, and compare with the values FLT_EPSILON, DBL_EPSILON, and LDBL_EPSILON defined in float.h. Hint:
+
+        double x=1; while(1+x!=1){x/=2;} x*=2;
+
+        Do the same using the do while loop and for loop. Hint:
+
+        double e; for(e=1; 1+e!=1; e/=2){} e*=2;
+
+        Remember to use %Lg format placeholder for long double numbers. 
+
+    Define int max=INT_MAX/2; (or, say, INT_MAX/3, if the execution time is longer than you are willing to wait)
+        Calculate (using iteration statements) the sum
+
+        float sum_up_float = 1.0f + 1.0f/2 + 1.0f/3 + ... + 1.0f/max;
+
+        and another sum
+
+        float sum_down_float = 1.0f/max + 1.0f/(max-1) + 1.0f/(max-2) + ...  +1.0f;
+
+        with float type and compare the two sums.
+        Explain the difference.
+        Does this sum converge as function of max?
+        Now calculate the sums sum_up_double and sum_down_double using double type. Explain the result. 
+
+    Write a function with the signature int equal(double a, double b, double tau, double epsilon) that returns 1 if the numbers 'a' and 'b' are equal with absolute precision 'tau',
+
+    |a-b| < τ
+
+    or are equal with relative precision 'epsilon',
+
+    |a-b|/(|a|+|b|) < ε/2
+
+    and returns 0 otherwise.
+
+    The function must be placed in a separate .c file, compiled separately and then linked to the final executable.
+    Optional:
+    Write a function of type void (that is, it does not return anything) with one argument of type int, which in the case when the argument is 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9 prints out the name of the digit, correspondingly "zero", "one", "two", ... , "nine"; and prints "not a digit" in the case of other arguments. Use the switch construction. The signature of the function is void name_digit(int i). 

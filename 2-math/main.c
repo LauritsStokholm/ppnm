@@ -11,33 +11,33 @@ main (int argc, char **argv)
   printf("Exercise 1: Evaluate following mathematical functions\n");
 
   printf("%-20s %32s %32s\n", "Function", "Argument", "Value");
-  printf("%-32s %16s\|%-16s %16s\|%-16s\n", "", "Real", "Imag", "Real", "Imag");
+  printf("%-32s %16s|%-16s %16s|%-16s\n", "", "Real", "Imag", "Real", "Imag");
 
   x = 5; zero = 0;
   y = tgamma(x);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg \n", "True gamma (tgamma)", x, zero , y, zero);
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg \n", "True gamma (tgamma)", x, zero , y, zero);
 
   x = 0.5;
   y = j1(x);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Bessel 1st kind 1st order (j1) ", x, zero , y, zero);
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Bessel 1st kind 1st order (j1) ", x, zero , y, zero);
 
   x = -2;
   z = csqrt(x);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex square root", x, zero, creal(z), cimag(z));
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Complex square root", x, zero, creal(z), cimag(z));
 
   z = I*M_PI;
   zz = cexp(z);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
 
   z = I;
   zz = cexp(z);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Complex exponential", creal(z), cimag(z), creal(zz), cimag(zz));
 
   zz = cpow(z, M_E);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex power (base i)", M_E, zero, creal(zz), cimag(zz));
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Complex power (base i)", M_E, zero, creal(zz), cimag(zz));
 
   zz = cpow(z, z);
-  printf("%-32s %16lg\|%-16lg %16lg\|%-16lg\n", "Complex power (base i)", creal(I), cimag(I), creal(zz), cimag(zz));
+  printf("%-32s %16lg|%-16lg %16lg|%-16lg\n", "Complex power (base i)", creal(I), cimag(I), creal(zz), cimag(zz));
 
   printf("\n");
 
