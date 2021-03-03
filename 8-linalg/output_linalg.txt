@@ -1,0 +1,74 @@
+Custom check
+Custom check matrix 1:
+[6.13	-2.9	5.86]
+[8.08	-6.31	-3.89]
+[-4.36	1	0.19]
+Custom check matrix 2:
+[6.13	-2.9	5.86]
+[8.08	-6.31	-3.89]
+[-4.36	1	0.19]
+Custom check matrix 3:
+[6.13	-2.9	5.86]
+[8.08	-6.31	-3.89]
+[-4.36	1	0.19]
+Custom check matrix 4:
+[6.13	-2.9	5.86]
+[8.08	-6.31	-3.89]
+[-4.36	1	0.19]
+Matrices are ruined, as we can see: 
+Custom check matrix 1:
+[17.1696	6.62359	-0.331733]
+[8.08	-4.14212	4.2954]
+[-4.36	-1.41839	11.1261]
+Custom check matrix 2:
+[8.08	-6.31	-3.89]
+[-0.539604	-2.4049	-1.90906]
+[0.758663	-0.784717	7.31313]
+Custom check matrix 3:
+[-11.0396	6.62359	-0.331733]
+[0.470599	2.31391	4.2954]
+[-0.253937	0.342432	5.56303]
+Custom check matrix 4:
+[6.13	-2.9	5.86]
+[8.08	-6.31	-3.89]
+[-4.36	1	0.19]
+Testing results from each method: b is given:
+6.23
+5.37
+2.29
+And the solutions for each method is:
+
+
+Solution from HH method
+-1.1379
+-2.83303
+0.851459
+and checking the solution for Ax=b
+6.23
+5.37
+2.29
+Successful solution
+
+
+Solution from LU method
+-1.1379
+-2.83303
+0.851459
+and checking the solution for Ax=b
+6.23
+5.37
+2.29
+Successful solution
+
+
+Solution from QR method
+-1.1379
+-2.83303
+0.851459
+and checking the solution for Ax=b
+6.23
+5.37
+2.29
+Successful solution
+
+
