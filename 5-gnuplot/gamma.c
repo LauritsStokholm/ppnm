@@ -19,39 +19,20 @@ my_lgamma (double x)
   return (log(2*M_PI) - log(x))/2. + x*(log(x + (1./(12*x - (1./(10*x))))) - 1);
 }
 
-double complex myComplexGamma(double complex num){
-  /*
-  Implementation of a single precision error function approximation
-  (Gergo Nemes, from Wikipedia)
-  ¤ Val: The query point at which to evaluate the function; erf(val).
-  */
 
-  if( creal(num) < 0 ){
-    return M_PI / csin( M_PI*num ) / myComplexGamma( 1 - num );
+double complex my_cgamma(double complex z){
+
+  if( creal(z) < 0 ){
+    return M_PI / csin( M_PI*z ) / my_cgamma( 1 - z );
   }
-  if( creal(num) < 9 ){
-    return myComplexGamma( num + 1 ) / num;
+  if( creal(z) < 9 ){
+    return my_cgamma( z + 1 ) / z;
   }
 
-  double complex lnGamma  =  num * clog( num + 1 / ( 12 * num - 1 /(num*10) ) ) - num + clog( 2 * M_PI / num ) / 2;
+  double complex lnGamma  =  z * clog( z + 1 / ( 12 * z - 1 /(z*10) ) ) - z + clog( 2 * M_PI / z ) / 2;
   double complex result   =  cexp(lnGamma);
 
   return result;
-}
-
-double
-my_cgamma (double complex z)
-{
-  if( creal(z) < 0 )
-  {
-    return M_PI / csin( M_PI*z ) / my_cgamma( 1 - z );
-  }
-  if( creal(z) < 9 )
-  {
-    return my_cgamma( z + 1 ) / z;
-  }
-  double complex log_cgamma = (clog(2*M_PI) - clog(z))/2. + z*(clog(z + 1./(12*z - 1./(10*z))) - 1);
-  return cexp(log_cgamma);
 }
 
 
@@ -90,7 +71,7 @@ main (int argc, char **argv)
   while(fscanf(input3, "%lg\t%lg", &x, &y) != EOF)
   {
     z = x + y*I;
-    fprintf(output3, "%lg\t%lg\t%lg\n", x, y, fmin( 6, cabs(myComplexGamma(z) ) ));
+    fprintf(output3, "%lg\t%lg\t%lg\n", x, y, fmin( 6, cabs(my_cgamma(z) ) ));
   }
 
   fclose(input1);
