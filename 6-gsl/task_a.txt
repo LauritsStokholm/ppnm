@@ -1,0 +1,5 @@
+Task a: Integration using QAGS:
+Result	Error
+-4	1.35447e-13
+
+

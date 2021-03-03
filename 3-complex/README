@@ -1,0 +1,101 @@
+Consider a representation o a complex number as a structure
+
+struct komplex {double re,im;};
+typedef struct komplex komplex;
+
+or, even shorter,
+
+typedef struct {double re,im;} komplex;
+
+    Implement a set of functions to deal with complex numbers. The declarations of the functions must be kept in a header file with the name komplex.h. Like this:
+
+    #ifndef HAVE_KOMPLEX_H /* this is necessary for multiple includes */
+    #define HAVE_KOMPLEX_H
+
+    struct komplex {double re; double im;};
+    typedef struct komplex komplex;
+
+    void    komplex_print    (char* s, komplex z);   /* prints string s and then komplex z */
+    void    komplex_set      (komplex* z, double x, double y);   /* z is set to x+i*y */
+    komplex komplex_new      (double x, double y);   /* returns x+i*y */
+    komplex komplex_add      (komplex a, komplex b); /* returns a+b */
+    komplex komplex_sub      (komplex a, komplex b); /* returns a-b */
+
+    /* the following is optional */
+    int     komplex_equal    (komplex a, komplex b, double acc, double eps); /* returns 1 if equal, 0 otherwise */
+    komplex komplex_mul      (komplex a, komplex b); /* returns a*b */
+    komplex komplex_div      (komplex a, komplex b); /* returns a/b */
+    komplex komplex_conjugate(komplex z);            /* returns complex conjugate */
+    double  komplex_abs      (komplex z);
+    komplex komplex_exp      (komplex z);
+    komplex komplex_sin      (komplex z);
+    komplex komplex_cos      (komplex z);
+    komplex komplex_sqrt     (komplex z);
+    /* end of optional */
+
+    #endif
+
+    The implementations of the function must be in the file komplex.c. It is a good practice to #include"komplex.h" in komplex.c to allow the compiler to check the consistensy of your definitions.
+
+    Your komplex.c should look like this,
+
+    #include<stdio.h>
+    #include"komplex.h"
+
+    void komplex_print (char *s, komplex a) {
+    	printf ("%s (%g,%g)\n", s, a.re, a.im);
+    }
+
+    komplex komplex_new (double x, double y) {
+    	komplex z = { x, y };
+    	return z;
+    }
+
+    void komplex_set (komplex* z, double x, double y) {
+    	(*z).re = x;
+    	(*z).im = y;
+    }
+
+    komplex komplex_add (komplex a, komplex b) {
+    	komplex result = { a.re + b.re , a.im + b.im };
+    	return result;
+    }
+    /* ... */
+
+    Write a main program—to be kept in the file main.c—that tests you functions. Like the following,
+
+    #include"komplex.h"
+    #include"stdio.h"
+    #define TINY 1e-6
+
+    ine main(){
+    	komplex a = {1,2}, b = {3,4}
+
+    	printf("testing komplex_add...\n");
+    	komplex r = komplex_add(a,b);
+    	komplex R = {4,6};
+    	komplex_print("a=",a);
+    	komplex_print("b=",b);
+    	komplex_print("a+b should   = ", R);
+    	komplex_print("a+b actually = ", r);
+
+    /* the following is optional */
+
+    	if( komplex_equal(R,r,TINY,TINY) )
+    		printf("test 'add' passed :) \n");
+    	else
+    		printf("test 'add' failed: debug me, please... \n");
+    }
+
+    Your makefile should be like this,
+
+    CFLAGS = -Wall -std=gnu99
+    LDLIBS = -lm
+    .PHONEY: all clean
+    all              : out.txt           ; cat $<
+    out.txt          : main              ; ./$< > $@
+    main             : main.o komplex.o  # built-in linking rule is used here
+    main.o komplex.o : komplex.h         # built-in compiling rule is used here
+    clean            :                   ; $(RM) main main.o komplex.o out.txt
+
+

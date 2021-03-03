@@ -1,0 +1,9 @@
+set terminal eps
+set output "my_cgamma.eps"
+set title "Absolute value of complex Gamma function"
+set nokey; set grid
+set xlabel "Re(z)"; set ylabel "Im(z)"; set zlabel "|G(z)|"
+set xrange [-4.5:4.5]; set yrange [-1.5:1.5]; set zrange [-0.5:6]
+set xtics 1; set ytics 1; set ztics 1 
+set view 75, 350, 1, 1
+splot "my_cgamma_out.txt" u "x":"y":"z" w l lc "black"

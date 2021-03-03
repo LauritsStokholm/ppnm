@@ -1,0 +1,20 @@
+set terminal eps
+set output "my_tgamma.eps"
+set key out
+set title "Comparison of Gammafunctions"
+set grid
+set xlabel "x"
+set ylabel "y"
+set xtics 1
+set ytics 1
+set yrange [-7:7]
+set xrange [-5:5]
+array point[1]
+plot \
+"my_tgamma_out.txt" using "x":"math" with lines linetype 1 dashtype 1 linewidth 5 linecolor "red"   title "math.h",        \
+"my_tgamma_out.txt" using "x":"gsl"  with lines linetype 1 dashtype 2 linewidth 5 linecolor "grey"  title "gsl",           \
+"my_tgamma_out.txt" using "x":"my"   with lines linetype 1 dashtype 3 linewidth 5 linecolor "black" title "self-defined",  \
+point using (1):(1) pt 2 ps 1 lc "black" t "n!", \
+point using (2):(1) pt 2 ps 1 lc "black" notitle, \
+point using (3):(2) pt 2 ps 1 lc "black" notitle, \
+point using (4):(6) pt 2 ps 1 lc "black" notitle, \

@@ -1,0 +1,17 @@
+set terminal eps
+set output "erf.eps"
+set key out
+set title "Implementation of erf(x) comparison"
+set grid
+set xlabel "x"
+set ylabel "y"
+set xtics 1
+set ytics 1
+set xrange [0:]
+array point[1]
+plot \
+"task_b.txt" using "x":"res0" with lines linetype 1 dashtype 1 linewidth 5 linecolor "red"    title "qags",          \
+"task_b.txt" using "x":"res1" with lines linetype 1 dashtype 2 linewidth 5 linecolor "grey"   title "cquad",         \
+"task_b.txt" using "x":"res2" with lines linetype 1 dashtype 3 linewidth 5 linecolor "black"  title "romberg",       \
+"task_b.txt" using "x":"res3" with lines linetype 1 dashtype 4 linewidth 5 linecolor "yellow" title "gauss-legendre",\
+"task_b.txt" using "x":"func"  with lines linetype 1 dashtype 5 linewidth 5 linecolor "green" title "erf(x)",\

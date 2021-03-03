@@ -1,0 +1,14 @@
+set terminal eps
+set output "my_lgamma.eps"
+set key out
+set title "Comparison of Logarithmic Gammafunctions"
+set grid
+set xlabel "x"
+set ylabel "y"
+set xtics 1
+set ytics 1
+set xrange [-1:5]
+plot \
+"my_lgamma_out.txt" using "x":"math" with lines linetype 1 dashtype 1 linewidth 5 linecolor "red"   title "math.h",        \
+"my_lgamma_out.txt" using "x":"gsl"  with lines linetype 1 dashtype 3 linewidth 5 linecolor "grey"  title "gsl",           \
+"my_lgamma_out.txt" using "x":"my"   with lines linetype 1 dashtype 3 linewidth 5 linecolor "black" title "self-defined",  \

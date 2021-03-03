@@ -1,0 +1,13 @@
+set terminal eps
+set output "erf.eps"
+set key out
+set title "Comparison of Errorfunctions"
+set grid
+set xlabel "x"
+set ylabel "y"
+set xrange [0:2]
+set yrange [0:1.5]
+plot \
+"erf_output.txt" using "x":"matherf" with lines linetype 1 dashtype 1 linewidth 5 linecolor "red"   title "math.h",\
+"erf_output.txt" using "x":"gslerf"  with lines linetype 1 dashtype 2 linewidth 5 linecolor "grey"  title "gsl", \
+"erf_output.txt" using "x":"myerf"   with lines linetype 1 dashtype 3 linewidth 5 linecolor "black" title "self-defined"

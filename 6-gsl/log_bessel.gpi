@@ -1,0 +1,27 @@
+set terminal eps
+set output "bessel.eps"
+set key out
+set title "Implementation of bessel(x) comparison"
+set grid
+set xlabel "x"
+set ylabel "y"
+set xtics 5
+set ytics 0.1
+set xrange [0:]
+array point[1]
+plot \
+"j0.txt" using "x":"res0" with lines linetype 1 dashtype 1 linewidth 5 linecolor "red"    title "j0 (qags)",          \
+"j0.txt" using "x":"res1" with lines linetype 1 dashtype 2 linewidth 5 linecolor "grey"   title "j0 (cquad)",         \
+"j0.txt" using "x":"res2" with lines linetype 1 dashtype 3 linewidth 5 linecolor "black"  title "j0 (romberg)",       \
+"j0.txt" using "x":"res3" with lines linetype 1 dashtype 4 linewidth 5 linecolor "yellow" title "j0 (gauss-legendre)",\
+"j0.txt" using "x":"func"  with lines linetype 1 dashtype 5 linewidth 5 linecolor "green" title "j0(x)",\
+"j1.txt" using "x":"res0" with lines linetype 2 dashtype 1 linewidth 5 linecolor "red"    title "j1 (qags)",          \
+"j1.txt" using "x":"res1" with lines linetype 2 dashtype 2 linewidth 5 linecolor "grey"   title "j1 (cquad)",         \
+"j1.txt" using "x":"res2" with lines linetype 2 dashtype 3 linewidth 5 linecolor "black"  title "j1 (romberg)",       \
+"j1.txt" using "x":"res3" with lines linetype 2 dashtype 4 linewidth 5 linecolor "yellow" title "j1 (gauss-legendre)",\
+"j1.txt" using "x":"func"  with lines linetype 2 dashtype 5 linewidth 5 linecolor "green" title "j1(x)",\
+"j2.txt" using "x":"res0" with lines linetype 3 dashtype 1 linewidth 5 linecolor "red"    title "j2 (qags)",          \
+"j2.txt" using "x":"res1" with lines linetype 3 dashtype 2 linewidth 5 linecolor "grey"   title "j2 (cquad)",         \
+"j2.txt" using "x":"res2" with lines linetype 3 dashtype 3 linewidth 5 linecolor "black"  title "j2 (romberg)",       \
+"j2.txt" using "x":"res3" with lines linetype 3 dashtype 4 linewidth 5 linecolor "yellow" title "j2 (gauss-legendre)",\
+"j2.txt" using "x":"func"  with lines linetype 3 dashtype 5 linewidth 5 linecolor "green" title "j2(x)",\
