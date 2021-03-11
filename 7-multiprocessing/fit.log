@@ -1,0 +1,60 @@
+
+
+*******************************************************************************
+Fri Mar  5 02:30:54 2021
+
+
+FIT:    data read from "convergence_input.txt" using 1:2
+        format = x:z
+        #datapoints = 15
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a / sqrt(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 1.4236361128e-06   0.00e+00  6.64e-04    1.000000e+00
+   3 1.2594358846e-06  -2.26e-05  6.64e-07    1.157575e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.25944e-06
+rel. change during last iteration : -2.26046e-10
+
+degrees of freedom    (FIT_NDF)                        : 14
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000299933
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8.99597e-08
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.15757          +/- 0.1166       (10.08%)
+
+
+*******************************************************************************
+Fri Mar  5 02:30:54 2021
+
+
+FIT:    data read from "convergence_input_omp.txt" using 1:2
+        format = x:z
+        #datapoints = 15
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = b / sqrt(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   b            
+   0 1.4236361128e-06   0.00e+00  6.64e-04    1.000000e+00
+   3 1.2594358846e-06  -2.26e-05  6.64e-07    1.157575e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.25944e-06
+rel. change during last iteration : -2.26046e-10
+
+degrees of freedom    (FIT_NDF)                        : 14
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000299933
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8.99597e-08
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+b               = 1.15757          +/- 0.1166       (10.08%)

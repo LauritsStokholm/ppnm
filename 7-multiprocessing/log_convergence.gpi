@@ -1,0 +1,17 @@
+\
+set terminal "eps";\
+set output "convergence.eps";\
+set title "Monte Carlo calculation of pi";\
+set logscale x; set logscale y;\
+set xlabel "Number of points; N"; set ylabel "Absolute error";\
+a = 1;\
+b = 1;\
+f(x) = a / sqrt(x);\
+g(x) = b / sqrt(x);\
+fit f(x) "convergence_input.txt" using 1:2 via a;\
+fit g(x) "convergence_input_omp.txt" using 1:2 via b;\
+plot "convergence_input.txt" u 1:2 w lp lt 1 lc "black"\
+, "convergence_input_omp.txt" u 1:2 w lp lt 2 lc "black"\
+, f(x) with lines title "$1/\sqrt{N}$"\
+, g(x) with lines title "$1/\sqrt{N}$ (OMP)"\
+
