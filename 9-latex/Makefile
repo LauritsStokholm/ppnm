@@ -35,6 +35,7 @@ exp.tex: output.txt Makefile
 	, "$<" u "x":"exp"   w l lt 2 lw 7 dt 2 lc "red" t "math.h"\
 	, f(x) w l lt 2 lw 7 dt 3 lc "yellow" t "gnuplot";\
 	set tmargin 0.5; set bmargin 4;\
+	set yrange [-1e-11:1e-11];\
 	set xtics scale 0.5 font ".8" nomirror;\
 	set xlabel "x";\
 	plot \
@@ -47,7 +48,7 @@ output.txt: main
 main: main.c
 
 clean:
-	$(RM) *.aux *.log *.pdf *.fls *.dvi *.fdb_latexmk *.synctex.gz *.bcf *.eps *.out *.run.xml
+	$(RM) *.aux *.log *.pdf *.fls *.dvi *.fdb_latexmk *.synctex.gz *.bcf *.eps *.out *.run.xml *.pyg *.bbl *.blg
 	$(RM) $(OBJECTS)
 	find ./ -type f -executable -delete
 

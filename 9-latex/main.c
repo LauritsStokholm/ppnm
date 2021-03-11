@@ -15,7 +15,7 @@ main (int argc, char **argv)
   double dx = 1e-3, xmin = -2, xmax = 5;
   fprintf(fp, "x\texp\tmyexp\n");
   for (double x=xmin; x<xmax; x+=dx){
-    fprintf (fp, "%lg\t%lg\t%lg\n", x, exp(x), my_exp(x));
+    fprintf (fp, "%lg\t%.15lg\t%.15lg\n", x, exp(x), my_exp(x));
   }
 
   fclose(fp);

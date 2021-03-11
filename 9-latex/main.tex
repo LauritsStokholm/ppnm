@@ -125,8 +125,11 @@ paper implementation.}
 \end{figure}
 
 \section{Conclusion}
-The residuals come out of the order of $10^{-16}$ and $10^{-17}$ which compared
-to the precision of a double (15 decimals) is within the ideal zero. Thus we
+The residuals of this quick and dirty implementation compared to the
+exponential function given in the mathematical header \textsl{math.h} is of the
+order of $10^{-12}$ which compared to the precision of a double (15 decimals)
+is very good. The cutoff at the 10th term was arbitrary, and one could of
+course consider a higher degree polynomial estimation. All in all, we
 can conclude a successfull implementation of the exponential function.
 
 \printbibliography
