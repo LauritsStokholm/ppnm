@@ -1,0 +1,10 @@
+set terminal eps
+set output "operations.eps"
+set key left
+set title "This is a title"
+set grid
+set xlabel "x"
+set ylabel "y"
+plot \
+"convergence_input.txt"   u 1:2 w p pt 1 ps 1 t "My implementation"  \
+, "convergence_gsl_input.txt" u 1:2 w p pt 2 ps 1 t "GSL"\
