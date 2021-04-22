@@ -47,8 +47,9 @@ convergence_input.txt: my_timer
 gsl_timer: gsl_timer.c
 my_timer: my_timer.c
 
-prog: main main.c
+prog: main
 	./$<
+
 main: main.c
 
 
