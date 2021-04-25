@@ -1,0 +1,14 @@
+set terminal eps
+set output "threebody.eps"
+set key out
+set title "This is a title"
+set grid
+set xlabel "x"
+set ylabel "y"
+plot \
+"rk12_threebody.txt"   using 2:3  with lp title "rk12, planet 1" \
+, "rk12_threebody.txt" using 4:5  with lp title "rk12, planet 2" \
+, "rk12_threebody.txt" using 6:7  with lp title "rk12, planet 3" \
+, "rk23_threebody.txt" using 2:3  with lp title "rk23, planet 1" \
+, "rk23_threebody.txt" using 4:5  with lp title "rk23, planet 2" \
+, "rk23_threebody.txt" using 6:7  with lp title "rk23, planet 3" \
