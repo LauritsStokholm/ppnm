@@ -35,22 +35,22 @@ task_a (void)
   // Changes A_cpy and V by Jacobi operations
   int sweep_counter = jacobi_diag (A_cpy, eigenvals, V);
 
-  fprintf(fp, "after %i sweeps; eigenvalues calculated:\n", sweep_counter);
-  vector_fprintf(fp, eigenvals);
-  fprintf(fp, "\n\n");
+  fprintf (fp, "after %i sweeps; eigenvalues calculated:\n", sweep_counter);
+  vector_fprintf (fp, eigenvals);
+  fprintf (fp, "\n\n");
 
 
   matrix_transpose_memcpy (V, VT);
   matrix_matrix_product (A, V, AV);
   matrix_matrix_product (VT, AV, VTAV);
 
-  fprintf(fp, "Calculated value of VT*A*V\n");
-  matrix_fprintf(fp, VTAV);
+  fprintf (fp, "Calculated value of VT*A*V\n");
+  matrix_fprintf (fp, VTAV);
 
   matrix_matrix_product (V, VT, VVT);
   matrix_matrix_product (VT, V, VTV);
 
-  fprintf(fp, "\n\n\n TESTING IMPLEMENTATION \n");
+  fprintf (fp, "\n\n\n TESTING IMPLEMENTATION \n");
   fprintf (fp, "Is V*VT == IDENTITY ?\n");
   matrix_fprintf (fp, VVT);
   fprintf_result_matrix_matrix_test_equal (fp, VVT, ID, 1e-15, 1e-15);

@@ -1,0 +1,24 @@
+set terminal pngcairo truecolor
+set output "contour.png"
+set title "Contour of Rosenbrock Function"
+set xlabel "x"
+set ylabel "y"
+set zlabel "z"
+set xtics 1
+set ytics 1
+set key default
+set view 120, 30, 1, 1
+set contour
+set contour surface
+set contour base
+set isosamples 15, 15
+set cntrparam level incremental 5e2, 5e3, 5e4
+Rosenbrock(x,y) = (1-x)**2 + 100*(y - x**2)**2
+splot [-2:2] [-2:2.5] Rosenbrock(x,y) notitle ,\
+"hybrids.txt" u "x":"y":"f(x,y)" w lp lw 1 dt 1 lc rgb "black"   t "hybrids",\
+"broyden.txt" u "x":"y":"f(x,y)" w lp lw 1 dt 1 lc rgb "green"  t "broyden",\
+"hybrid.txt"  u "x":"y":"f(x,y)" w lp lw 1 dt 1 lc rgb "blue" t "hybrid" ,\
+"dnewton.txt" u "x":"y":"f(x,y)" w lp lw 1 dt 1 lc rgb "red" t "dnewton",\
+"-" w p pt 5 ps 3 t "start"
+-2.0 3.0 109.0
+e

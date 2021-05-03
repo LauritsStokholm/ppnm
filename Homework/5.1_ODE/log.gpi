@@ -1,0 +1,12 @@
+set terminal eps
+set output "harmonic.eps"
+set key out
+set title "This is a title"
+set grid
+set xlabel "x"
+set ylabel "y"
+plot \
+"task_a.txt"   using 1:2 with l dt 1 lc "black" title "rk12, y0" \
+, "task_a.txt" using 1:3 with l dt 1 lc "black" title "rk12, y1" \
+, "task_a.txt" using 1:4 with l dt 2 lc "red" title "rk12, cos" \
+, "task_a.txt" using 1:5 with l dt 2 lc "blue" title "rk12, sin" \

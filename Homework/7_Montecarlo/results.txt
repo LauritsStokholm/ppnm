@@ -1,0 +1,33 @@
+Calculate the tripple integral from 0 to pi of sin(x)sin(y)sin(z)
+Actual result is 8
+Using plain monte-carlo, the result is =8.00886773565685
+ with error =0.00750427632251988
+Using 1000000 sample points
+
+Using a quasi-random monte-carlo, the result is =8.00003480698885
+ with error =1.05236956373267e-05
+Using 1000000 sample points
+
+Using a recursive stratified sampling monte-carlo, the result is =8.00230675452257
+ with error =0.0197623530489839
+Using 0.0001 as absolute and relative tolerance, and 1000000 sample points
+
+
+
+
+A more difficult beast
+
+Calculate the tripple integral from 0 to pi of (1/pi)^3 1./[1-cos(x)cos(y)cos(z)]
+Actual result is 1.39320392968568
+Using plain monte-carlo, the result is =1.39982883557689
+ with error =0.0124281145095518
+Using 1000000 sample points
+
+Using a quasi-random monte-carlo, the result is =1.38121933176093
+ with error =0.000423865452037945
+Using 1000000 sample points
+
+Using a recursive stratified sampling monte-carlo, the result is =1.37026024496475
+ with error =0.0396402008335326
+Using 0.01 as absolute and relative tolerance, and 1000 sample points
+

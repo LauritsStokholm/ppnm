@@ -1,0 +1,15 @@
+set terminal pngcairo truecolor
+set output "swave.png"
+set tmargin 1; set bmargin 0.5
+set lmargin 8; set rmargin 5
+unset xtics
+set ytics nomirror
+set ylabel "psi(r)"
+set multiplot layout 2,1 title "Solution to s-wave\n"
+plot "data2.txt" u 1:2 w l lw 2 dt 2 lc "blue" t "Estimate", \
+"data2.txt" u 1:3      w l lw 2 dt 5 lc "red"   t "Actual"
+set tmargin 0.5; set bmargin 4
+set xtics scale 0.5 font ".8" nomirror
+set xlabel "r [Bohr Radii]"
+plot "data2.txt" u 1:($3-$2) w l lt 1 t "Residual"
+unset multiplot

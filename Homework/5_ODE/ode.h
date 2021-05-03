@@ -198,7 +198,7 @@ my_ode_driver (void f(double t, vector* y, vector* dydx),
 
       //vector_set (x, k, x+h);
       x = x+h;
-      fprintf(fp, "%lg\t", x);
+      fprintf (fp, "%lg\t", x);
       for (i=0; i<n; i++)
       {
         vector_set (y, i, vector_get (yh, i));
