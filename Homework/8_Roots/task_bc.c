@@ -104,7 +104,7 @@ caller (int toggle, double rmax)
   vector_set (epsilon, 0, epsilon_guess);
 
   // Acceptance tolerance
-  double acc = 1e-1;
+  double acc = 1e-3;
 
   // Change epsilon, as to set M_e (rmax) = 0
   newton (M_e, epsilon, (void*) &rmax, acc);
