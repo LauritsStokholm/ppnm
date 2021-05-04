@@ -11,9 +11,21 @@ PLOTTER = gnuplot
 void =
 
 #==============================================================================#
+convergence.gpi: main convergence.txt precision.txt Makefile
+	echo 'set terminal pngcairo truecolor' > $@
+	echo 'set output "convergence.png"' >> $@
+	echo 'set title "Exercise b and c) Convergence in Shooting Method"' >> $@
+	echo 'set key bottom right' >> $@
+	echo 'set xlabel "Value of rmax"' >>$@
+	echo 'set ylabel "Number of Itterations for convergence"' >>$@
+	echo 'plot "convergence.txt" u 1:2 w l lw 2 dt 2 lc "blue" t "Boundary Condition f(rmax)=0",\\' >> $@
+	echo '"precision.txt" u 1:2 w l lw 2 dt 4 lc "red" t "Boundary Condition f(rmax)=r*exp(-kr)"' >> $@
+	gnuplot $@
+	ristretto convergence.png
+
 
 # Figure 1
-myPlot.$(FORMAT): data2.txt Makefile
+myPlot.$(FORMAT): task_b.dat Makefile
 	echo 'set terminal eps' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
@@ -32,7 +44,7 @@ myPlot.$(FORMAT): data2.txt Makefile
 	gv $@
 #==============================================================================#
 
-data2.txt: main
+convergence.txt precision.txt task_b.dat task_c.dat: main
 	./main
 
 main: main.c

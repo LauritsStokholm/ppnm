@@ -6,6 +6,8 @@
  * ............................................................ */
 
 
+int converged_iteration = 0;
+
 // Defining ODES
 // This is the s-wave radial Schrodinger equation for the H-atom
 void swave (double r, vector* y, vector* yprime, void* params)
@@ -27,27 +29,30 @@ F_e (double e, double r)
 {
   assert (r >= 0);
   // Limit for r->0
-  double rmin = 1e-3;
-  double rmax = 10;
+  double rmin = 1e-3; // rmax= 10, but integration is up to variable r
   if (r < rmin){ return r - r*r;}
 
-  double t = rmin; // Parameter for the system; to be driven from t to t1
-  double step_size = 1e-3;// Starting step
+  double t = rmin; // Parameter for the system; to be driven from t=rmin: t=r
+  double step_size = 1e-1;// Starting step
   double epsabs = 1e-3, epsrel=1e-3;  // Precision / tolerance
-  int iter_max = 10000;
 
   void* params = (void*) &e;
 
-  // Solve ODE
+  // Set y(a)
   vector* y = vector_alloc (2);
   vector_set (y, 0, t - t*t);
   vector_set (y, 1, 1 - 2*t);
 
   int ODE_method = 12; //rkstep12 = 12 or rkstep23 = 23
 
-  // Solve ODE and set the answer in y
-  my_ode_driver (swave, r, params, y, rmin, rmax, &step_size, iter_max,
-      ODE_method, epsabs, epsrel);
+  // Integration (solve from y(a) to y(b))
+  int iter = my_ode_driver (swave, params, y, rmin, r, step_size, ODE_method,
+                 epsabs, epsrel);
+
+  // For convergence test
+  converged_iteration = iter;
+
+  // To free vector and still return value.
   double val = vector_get (y, 0);
   vector_free (y);
   return val;
@@ -61,7 +66,7 @@ void
 M_e (vector* x, void* params, vector* fx)
 {
   double epsilon = vector_get (x, 0);
-  //assert ( epsilon < 0 ); // Energy is negative (bound state)
+  assert ( epsilon < 0 ); // Energy is negative (bound state)
   double rmax = *(double *) params;
   double M_e = F_e (epsilon, rmax);
   vector_set (fx, 0, M_e);
@@ -69,43 +74,93 @@ M_e (vector* x, void* params, vector* fx)
 }
 
 void
-task_b (void)
+M_e_nonzero (vector* x, void* params, vector* fx)
 {
-  FILE* fp = fopen ("test.txt", "w");
-  fprintf (fp, "Task b\n");
+  double epsilon = vector_get (x, 0);
+  assert (epsilon < 0);
+  double rmax = *(double *) params;
+  double M_e = F_e (epsilon, rmax) - rmax*exp(-sqrt(-2*epsilon)*rmax);
+  vector_set (fx, 0, M_e);
+}
+
+int
+caller (int toggle, double rmax)
+{
+  // Basics
+  int status, iter =0;
+
+  FILE* fp;
+  assert (toggle == 0 || toggle == 1);
+  if (toggle == 0) {fp = fopen("task_b.dat", "w");}
+  if (toggle == 1) {fp = fopen("task_c.dat", "w");}
+
 
   // Initialisation of coordinate and function vectors
   vector* epsilon  = vector_alloc (1);
   vector* fx = vector_alloc (1); // M_e = F_e (eps, rmax);
 
   // Function parameters and initial guess of root coordinates
-  double rmax = 10; // rmax
   double epsilon_guess = -1;
   vector_set (epsilon, 0, epsilon_guess);
 
   // Acceptance tolerance
-  double acc = 1e-4;
+  double acc = 1e-1;
 
   // Change epsilon, as to set M_e (rmax) = 0
   newton (M_e, epsilon, (void*) &rmax, acc);
 
-  fprintf (fp, "Checking the given root\n");
+  ///fprintf (fp, "Checking the given root\n");
   M_e (epsilon, (void*) &rmax, fx);
   vector_fprintf (fp, fx);
 
   double e = vector_get (epsilon, 0);
-  vector_fprintf (fp, epsilon);
-  fprintf (fp,"epsilon = %lg\n", e);
+  FILE* fp2 = fopen ("task2.txt", "w");
+  fprintf (fp2, "rmax\tepsilon\n");
+  fprintf (fp2, "%lg\t%lg\n", rmax, e);
 
-  FILE * fp2 = fopen("data2.txt", "w");
-  fprintf(fp2, "r\tf(e,r)\tExact\n");
-
+  fprintf(fp, "r\tf(e,r)\tExact\n");
   for (double ri=0; ri<=rmax; ri+=0.001){
-    fprintf(fp2, "%lg\t%lg\t%lg\n", ri, F_e(e,ri), ri*exp(-ri));
+    fprintf(fp, "%lg\t%lg\t%lg\n", ri, F_e(e, ri), ri*exp(-ri));
   }
 
   vector_free (epsilon);
   vector_free (fx);
+  fclose (fp);
   fclose (fp2);
 
+  return converged_iteration;
 }
+
+// Convergence test
+int
+convergence (int toggle)
+{
+
+  assert (toggle == 0 || toggle == 1);
+  FILE* fp;
+  if (toggle == 0) {fp = fopen("convergence.txt", "w");}
+  else { fp = fopen ("precision.txt", "w");}
+
+  fprintf (fp, "rmax\titer\n");
+  for (double rmax=2; rmax < 10; rmax+=0.1)
+  {
+    int iter = caller (toggle, rmax);
+    fprintf (fp, "%lg\t%i\n", rmax, iter);
+  }
+  return 0;
+}
+
+
+void
+task_b (void)
+{
+  convergence (0);
+}
+
+
+void
+task_c(void)
+{
+  convergence (1);
+}
+

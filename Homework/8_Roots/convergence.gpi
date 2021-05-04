@@ -1,0 +1,8 @@
+set terminal pngcairo truecolor
+set output "convergence.png"
+set title "Exercise b and c) Convergence in Shooting Method"
+set key bottom right
+set xlabel "Value of rmax"
+set ylabel "Number of Itterations for convergence"
+plot "convergence.txt" u 1:2 w l lw 2 dt 2 lc "blue" t "Boundary Condition f(rmax)=0",\
+"precision.txt" u 1:2 w l lw 2 dt 4 lc "red" t "Boundary Condition f(rmax)=r*exp(-kr)"

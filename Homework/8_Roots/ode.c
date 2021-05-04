@@ -138,12 +138,13 @@ rkstep23 (void f(double x, vector* y, vector* yprime, void* params),
   return; // returns yh (evolution of y(x) at y(x+h) and dy (error)
 }
 
+// Integration of f(x) on [a, b] storing result in y
 int
 my_ode_driver
   (
     void f (double x, vector* y, vector* yprime, void* params),
-    double x, void* params, vector* y,
-    double a, double b, double* step_size, int iter_max, int ODE_type,
+    void* params, vector* y,
+    double a, double b, double step_size, int ODE_type,
     double epsabs, double epsrel
   )
 {
@@ -155,44 +156,36 @@ my_ode_driver
   vector* y2 = vector_alloc (n); // y (x+h)
   vector* dy = vector_alloc (n); // error
 
-  while (iter < iter_max)
+  // Do integration
+  double t = a;
+  while ( t<b )
   {
+    if ( t+step_size>b ) {step_size = b-t; }
+
     // Sets y2 = y(t+h)
-    if (ODE_type == 12) { rkstep12 (f, x, params, y, *step_size, dy, y2); }
-    if (ODE_type == 23) { rkstep23 (f, x, params, y, *step_size, dy, y2); }
+    if (ODE_type == 12) { rkstep12 (f, t, params, y, step_size, dy, y2); }
+    if (ODE_type == 23) { rkstep23 (f, t, params, y, step_size, dy, y2); }
 
     // Calculate comparison values for current node
     double y_error = vector_norm (dy);
     double norm_y  = vector_norm (y2);
-    double tol     = (norm_y*epsrel + epsabs) * sqrt( *step_size / (b-a) );
-
-    // Max has been reached
-    if ( iter > iter_max-1 )
-    {
-      fprintf (stderr, "fun: status=%i\n", iter);
-      return -iter;
-    }
+    double tol     = (norm_y*epsrel + epsabs) * sqrt( step_size / (b-a) );
 
     if (y_error < tol) /* accept step and continue */
     {
-      iter++; // No more than iter_max
+      iter++;
+      t += step_size;
       vector_memcpy (y2, y);
-      printf ("tol=%lg\n", tol);
-      printf ("y=%lg\n", vector_get(y, 0));
-      break;
     }
 
     // Adjust step_size
-    if (y_error > 0)
-    {
-      *step_size *= pow(tol/y_error, 0.25)*0.95;
-    }
-    else {*step_size *= 2;}
+    if (y_error > 0) { step_size *= pow(tol/y_error, 0.25)*0.95; }
+    else {step_size *= 2;}
   }
 
     vector_free (y2);
     vector_free (dy);
 
-    return 0;//iter+1;
+    return iter;
 }
 #endif

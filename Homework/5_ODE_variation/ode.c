@@ -202,7 +202,7 @@ lineback
     // If error is within tolerance, set y = yh
     if (y_error < tol) /* accept step and continue */
     {
-      printf ("iter:\t %d", iter);
+      printf ("iter:\t %d\n", iter);
       iter++;
 
       if (iter > iter_max-1)

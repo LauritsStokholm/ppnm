@@ -86,7 +86,7 @@ newton (void f(vector* x, void* params, vector* fx), vector* x, void* params, do
     f (xplus, params, fxplus);
 
     // simple backtracking linesearch algorithm
-    double step_size = 1;
+    double step_size = 1e-1;
 
     // If converged within tolerance or step_size is too small; return;
     double tolerance_x = 1./32;
@@ -98,7 +98,7 @@ newton (void f(vector* x, void* params, vector* fx), vector* x, void* params, do
       step_size /= 2.;
       vector_scale (step_size, DX);// DX = DX*step_size
       vector_add (xplus, DX);      // xplus = xplus + DX*step_size
-      f (xplus, params, fxplus);
+      f (xplus, params, fxplus);   // Set fxplus
       tolerance_y = (1 - step_size/2.)*vector_norm(fx);
       norm_fxplus = vector_norm (fxplus);
     }
