@@ -1,0 +1,43 @@
+
+ROSENBROCK'S VALLEY FUNCTION:
+Using qnewton
+nsteps = 30
+The minimum found is at:
+1	1	
+Checking f(x,y)=2.06472e-14
+
+Using nmsimplex
+nsteps = 131
+The minimum found is at:
+1	1	
+Checking f(x,y)=1.86674e-24
+
+
+
+HIMMELBLAU'S FUNCTION
+Using qnewton
+nsteps = 14
+The minimum found is at:
+3.584	-1.848	
+Checking f(x,y)=2.97351e-15
+
+Using nmsimplex
+nsteps = 157
+The minimum found is at:
+3	2	
+Checking f(x,y)=0
+
+
+
+HIGGS BOSON
+Using qnewton
+nsteps = 223
+The minimum found is at:
+126	2.086	9.876	
+Checking f(x,y)=26.8695
+
+Using nmsimplex
+nsteps = 174
+The minimum found is at:
+126	2.086	9.876	
+Checking f(x,y)=26.8695
