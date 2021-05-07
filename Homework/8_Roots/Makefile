@@ -6,10 +6,12 @@ LDLIBS += $$(gsl-config --libs)
 #==============================================================================#
 # For gnuplot
 SCRIPT = log.gpi
-FORMAT = eps
+FORMAT = png
 PLOTTER = gnuplot
 void =
 
+
+tagets: convergence.gpi myPlot.png
 #==============================================================================#
 convergence.gpi: main convergence.txt precision.txt Makefile
 	echo 'set terminal pngcairo truecolor' > $@

@@ -1,5 +1,5 @@
 set terminal eps
-set output "myPlot.eps"
+set output "myPlot.png"
 set key out
 set title "This is a title"
 set grid

@@ -70,7 +70,6 @@ M_e (vector* x, void* params, vector* fx)
   double rmax = *(double *) params;
   double M_e = F_e (epsilon, rmax);
   vector_set (fx, 0, M_e);
-  return;
 }
 
 void
@@ -83,12 +82,13 @@ M_e_nonzero (vector* x, void* params, vector* fx)
   vector_set (fx, 0, M_e);
 }
 
+/* ............................................................
+ * toggle: task b or task c (M_e or M_e_nonzero)
+ * rmax: variable
+ * ............................................................ */
 int
 caller (int toggle, double rmax)
 {
-  // Basics
-  int status, iter =0;
-
   FILE* fp;
   assert (toggle == 0 || toggle == 1);
   if (toggle == 0) {fp = fopen("task_b.dat", "w");}
@@ -104,13 +104,19 @@ caller (int toggle, double rmax)
   vector_set (epsilon, 0, epsilon_guess);
 
   // Acceptance tolerance
-  double acc = 1e-3;
+  double acc = 1e-6;
 
+
+  void (*f) (vector* x, void* p, vector* z);
   // Change epsilon, as to set M_e (rmax) = 0
-  newton (M_e, epsilon, (void*) &rmax, acc);
+  if (toggle == 0){f = &M_e;}
+  if (toggle == 1){f = &M_e_nonzero;}
 
-  ///fprintf (fp, "Checking the given root\n");
-  M_e (epsilon, (void*) &rmax, fx);
+  newton (f, epsilon, (void*) &rmax, acc);
+
+
+  fprintf (fp, "Checking the given root\n");
+  f (epsilon, (void*) &rmax, fx);
   vector_fprintf (fp, fx);
 
   double e = vector_get (epsilon, 0);
@@ -142,7 +148,7 @@ convergence (int toggle)
   else { fp = fopen ("precision.txt", "w");}
 
   fprintf (fp, "rmax\titer\n");
-  for (double rmax=2; rmax < 10; rmax+=0.1)
+  for (double rmax=2; rmax < 10; rmax+=1)
   {
     int iter = caller (toggle, rmax);
     fprintf (fp, "%lg\t%i\n", rmax, iter);
