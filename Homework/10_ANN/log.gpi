@@ -1,0 +1,10 @@
+set terminal eps
+set output "fit.eps"
+set key out
+set title "This is a title"
+set grid
+set xlabel "x"
+set ylabel "y"
+plot \
+"datapoints.txt"   using 1:2  with p title "datapoints" \
+, "fit.txt" using 1:2  with l title "ann fit" \

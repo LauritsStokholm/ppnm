@@ -20,8 +20,8 @@ numeric_gradient
 {
  /* Preparation of vectors */
   double z0, z1, diffquotient;
-  vector* xplus  = vector_alloc(x->size);  vector_set_zero (xplus);
-  vector* dx_k   = vector_alloc(x->size);  vector_set_zero (dx_k);
+  vector* xplus  = vector_alloc (x->size);  vector_set_zero (xplus);
+  vector* dx_k   = vector_alloc (x->size);  vector_set_zero (dx_k);
 
   z0 = f (x, params); // z0 = f(x)
   for (int k=0; k<x->size; k++) // dxk
@@ -128,6 +128,8 @@ qnewton
 
     // Armijo condition
     condition = z0 + alpha*DXgradient0;
+    printf ("z1: %lg\n", z1);
+    printf ("cond: %lg\n", condition);
     while (z1 >= condition)
     {
       // Do scale Newtons step
@@ -146,7 +148,7 @@ qnewton
 
       // If Armijo condition can not be fulfilled
       // (Reset DX and take full step)
-      if (lambda < lambda_min) 
+      if (lambda < lambda_min)
       {
         matrix_set_identity (B);
         break;
@@ -186,7 +188,6 @@ qnewton
     // Update point x (take step)
     vector_memcpy (xplus, x);
     z0 = z1; // f(x) = f(x+s)
-
 
     // Conditions for breaking
     if (vector_norm (gradient1) < eps)
