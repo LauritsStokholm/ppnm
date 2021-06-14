@@ -80,7 +80,7 @@ one_sided_jacobi_SVD (matrix* A, matrix* U, matrix* D, matrix* V)
   fprintf (fp, "Calculated value of U*A*VT\n");
   matrix_fprintf (fp, UDVT);
   fprintf (fp, "Is A = U*D*VT ?\n");
-  fprintf_result_matrix_matrix_test_equal (fp, UDVT, A, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, UDVT, A, 1e-8, 1e-8);
 
 
   // Testing for orthogonalities
@@ -98,20 +98,20 @@ one_sided_jacobi_SVD (matrix* A, matrix* U, matrix* D, matrix* V)
   fprintf (fp, "\n\n\n TESTING IMPLEMENTATION FOR ORTHOGONALITY\n");
   fprintf (fp, "Is V*VT == IDENTITY ?\n");
   matrix_fprintf (fp, VVT);
-  fprintf_result_matrix_matrix_test_equal (fp, VVT, ID_m, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, VVT, ID_m, 1e-8, 1e-8);
 
   fprintf (fp, "Is VT*V == IDENTITY ?\n");
   matrix_fprintf (fp, VTV);
-  fprintf_result_matrix_matrix_test_equal (fp, VTV, ID_m, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, VTV, ID_m, 1e-8, 1e-8);
 
 
   fprintf (fp, "Is U*UT == IDENTITY ?\n");
   matrix_fprintf (fp, UUT);
-  fprintf_result_matrix_matrix_test_equal (fp, UUT, ID_n, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, UUT, ID_n, 1e-8, 1e-8);
 
   fprintf (fp, "Is UT*U == IDENTITY ?\n");
   matrix_fprintf (fp, UTU);
-  fprintf_result_matrix_matrix_test_equal (fp, UTU, ID_m, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, UTU, ID_m, 1e-8, 1e-8);
 
 
   // Free memory and close file pointers

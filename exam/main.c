@@ -88,7 +88,7 @@ main (int argc, char* argv[])
   matrix_matrix_product (UD, VT, UDVT);
 
   fprintf (fp, "Is A = U*D*VT?\n");
-  fprintf_result_matrix_matrix_test_equal (fp, A, UDVT, 1e-10, 1e-10);
+  fprintf_result_matrix_matrix_test_equal (fp, A, UDVT, 1e-15, 1e-15);
 
 
   matrix_free (A);
