@@ -1,0 +1,10 @@
+set terminal eps
+set output "operations.svg"
+set key left
+set title "Convergence of SVG alg. of square matrices"
+set grid
+set xlabel "n [Dimension of square matrix]"
+set ylabel "t [Some time unit]"
+plot \
+"convergence_input.txt"   u 1:2 w p pt 1 ps 1 t "My implementation"  \
+, "convergence_gsl_input.txt" u 1:2 w p pt 2 ps 1 t "GSL"\
