@@ -1,3 +1,4 @@
+C) Build a program that reads a set of numbers from an inputfile and writes them together with function values in a table form to an outputfile. The program must read the names of the input/output files from the command-line and then use fopen.
 x	cos(x)	sin(x)
 1	0.540302	0.841471
 2	-0.416147	0.909297

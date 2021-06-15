@@ -1,10 +1,12 @@
 CC := gcc
 CFLAGS += -Wall -pedantic -std=gnu1x $$(gsl-config --cflags)
 LDLIBS += $$(gsl-config --libs)
-OBJ := output_linalg.txt output_eigenv.txt
-EXEC := main
+EXEC = main
+TARGETS = output_linalg.txt output_eigenv.txt
 
-default: $(OBJ)
+default: output_linalg.txt output_eigenv.txt
+	cat $<
+	cat $(word 2, $^)
 
 
 output_eigenv.txt: main

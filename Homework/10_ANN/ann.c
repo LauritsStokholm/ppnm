@@ -8,13 +8,17 @@ ann*
 ann_alloc
   (
     int n,
-    double (*f)(double, void* params)
+    double (*f) (double, void* params),
+    double (*df)(double, void* params),
+    double (*F) (double, double, double, double, void* params)
   )
 {
   ann* network = malloc ( sizeof(ann) );
   network -> nneurons = n;
   network -> parameters = vector_alloc (3*n);
-  network -> f = f;
+  network -> f  = f;
+  network -> df = df;
+  network -> F  = F;
   return network;
 }
 
@@ -42,14 +46,6 @@ ann_init_p (ann* network, int xmin, int xmax)
     vector_set (params, 3*i+2, wi);
   }
 }
-
-
-
-
-
-
-
-
 
 
 int
@@ -97,29 +93,15 @@ ann_supervised_train
   costparameters.x   = xdata;
   costparameters.y   = ydata;
 
-  vector* p = vector_alloc ((network->parameters)->size);
-
-  // Before training
-  vector_memcpy (network->parameters, p); // copy params into p
-  vector_printf (network->parameters);
-
-  int nsteps = qnewton (cost, p, (void*) &costparameters, eps);
-
-  // After training
-  vector_memcpy (p, network->parameters);
-  vector_printf (network->parameters);
-
-  // Try nmsimplex from the root of newton
-//  ann_train_nmsimplex (network, cost, (void*) &costparameters, eps);
-//  vector_printf (network->parameters);
-
+  qnewton (cost, network->parameters, (void*) &costparameters, eps);
+  //ann_train_nmsimplex (network, cost, (void*) &costparameters, eps);
 }
 
 double
 ann_response (ann* network, double x)
 {
   vector* params = network -> parameters;
-  return network->f(x, (void*) params);
+  network->f (x, (void*) params);
 }
 
 #endif

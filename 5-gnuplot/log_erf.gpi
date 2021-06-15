@@ -1,5 +1,5 @@
-set terminal eps
-set output "erf.eps"
+set terminal svg
+set output "erf.svg"
 set key out
 set title "Comparison of Errorfunctions"
 set grid

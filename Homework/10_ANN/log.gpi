@@ -6,5 +6,9 @@ set grid
 set xlabel "x"
 set ylabel "y"
 plot \
-"datapoints.txt"   using 1:2  with p title "datapoints" \
-, "fit.txt" using 1:2  with l title "ann fit" \
+"datapoints.txt"   using 1:2  with p title "datapoints f" \
+, "datapoints.txt" using 1:3  with p title "datapoints df" \
+, "datapoints.txt" using 1:4  with p title "datapoints F" \
+, "fit.txt" using 1:2  with l title "ann fitted f" \
+, "fit.txt" using 1:3  with l title "ann fitted df" \
+, "fit.txt" using 1:4  with l title "ann fitted F" \

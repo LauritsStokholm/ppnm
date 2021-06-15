@@ -1,5 +1,9 @@
 #include "main.h"
 
+/* ............................................................
+ * This exercise is two-fold; first introducing special mathematical functions, also
+ * of complex variables, and then goes on to look at precision numbers.
+ * ............................................................ */
 int
 main (int argc, char **argv)
 {

@@ -6,6 +6,8 @@ typedef struct
 {
   int nneurons; // Number of neurons
   double (*f) (double x, void* params); // Activation function
+  double (*df)(double x, void* params);
+  double (*F) (double xmin, double x, double epsabs, double epsrel, void* params);
   vector* parameters; // Neural network parameters (3 per neuron)
 } ann;
 
@@ -17,7 +19,13 @@ typedef struct
   vector* y;    // Co-domain (y-values) for learning
 } my_struct_params;
 
-ann*   ann_alloc    (int  n, double (*f)(double x, void* params) );
+ann*   ann_alloc
+( int  n,
+  double (*f) (double x, void* params),
+  double (*df)(double x, void* params),
+  double (*F) (double xmin, double x, double epsabs, double epsrel, void* params)
+);
+
 void   ann_free     (ann* network);
 void   ann_init_p   (ann* network, int xmin, int xmax);
 double ann_response (ann* network, double x);

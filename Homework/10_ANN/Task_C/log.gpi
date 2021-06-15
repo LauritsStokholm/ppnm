@@ -1,0 +1,10 @@
+set terminal eps
+set output "ode.eps"
+set key out
+set title "This is a title"
+set grid
+set xlabel "x"
+set ylabel "y"
+plot \
+"rk12_ann_ode.txt"   using 1:2  with p title "datapoints rk12 data" \
+, "rk23_ann_ode.txt" using 1:2  with p title "datapoints rk23 data" \

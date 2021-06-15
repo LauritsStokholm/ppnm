@@ -1,25 +1,24 @@
- Exercise "input/output"
-Reading and writing numbers in text form.
+Exercise "input/output": Reading and writing numbers in text form.
 
-    Build a program that reads a set of numbers from the command-line and prints these numbers together with their sines and cosines (in a table form) to the standard output. Something like
+Build a program that reads a set of numbers from the command-line and prints these numbers together with their sines and cosines (in a table form) to the standard output. Something like
 
-    ./read-cmdline 1 2 3 4 5 > out.txt
+./read-cmdline 1 2 3 4 5 > out.txt
 
-    or
+or
 
-    ./read-cmdline $(cat input.txt) > out.txt
+./read-cmdline $(cat input.txt) > out.txt
 
-    Build a program that reads a set of numbers from the standard input and prints these numbers together with their sines and cosines (in a table form) to the standard output. Something like
+Build a program that reads a set of numbers from the standard input and prints these numbers together with their sines and cosines (in a table form) to the standard output. Something like
 
-    echo 1 2 3 4 5 | ./read-stdin > out.txt
+echo 1 2 3 4 5 | ./read-stdin > out.txt
 
-    or
+or
 
-    ./read-stdin < input.txt > out.txt
-    cat input.txt | ./read-stdin > out.txt
+./read-stdin < input.txt > out.txt
+cat input.txt | ./read-stdin > out.txt
 
-    Build a program that reads a set of numbers (separated by newlines) from "inputfile" and writes them together with their cosines (in a table form) to "outputfile". The program must read the names of the "inputfile" and "outputfile" from the command-line and the fopen them. Something like
+Build a program that reads a set of numbers (separated by newlines) from "inputfile" and writes them together with their cosines (in a table form) to "outputfile". The program must read the names of the "inputfile" and "outputfile" from the command-line and the fopen them. Something like
 
-    ./read-file input.txt out.txt
+./read-file input.txt out.txt
 
 

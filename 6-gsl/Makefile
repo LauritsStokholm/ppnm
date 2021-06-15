@@ -2,10 +2,11 @@ CC = gcc
 CFLAGS += -Wall $$(gsl-config --cflags)
 LDLIBS += $$(gsl-config --libs)
 
-FORMAT = eps
+FORMAT = svg
 SCRIPT1 = log_erf.gpi
 SCRIPT2 = log_bessel.gpi
 PLOTTER = gnuplot
+IMAGE_VIEW = ristretto
 
 default: task_a.txt erf.$(FORMAT) bessel.$(FORMAT)
 
@@ -42,7 +43,7 @@ bessel.$(FORMAT): j0.txt j1.txt j2.txt Makefile
 	echo '"$(word 3, $^)" using "x":"res3" with lines linetype 3 dashtype 4 linewidth 5 linecolor "yellow" title "j2 (gauss-legendre)",\$(void)' >> $(SCRIPT2)
 	echo '"$(word 3, $^)" using "x":"func"  with lines linetype 3 dashtype 5 linewidth 5 linecolor "green" title "j2(x)",\$(void)' >> $(SCRIPT2)
 	$(PLOTTER) $(SCRIPT2)
-	gv $@
+	$(IMAGE_VIEW) $@
 
 
 # errorfunction
@@ -67,7 +68,7 @@ erf.$(FORMAT): task_b.txt
 	echo '"$<" using "x":"res3" with lines linetype 1 dashtype 4 linewidth 5 linecolor "yellow" title "gauss-legendre",\$(void)' >> $(SCRIPT1)
 	echo '"$<" using "x":"func"  with lines linetype 1 dashtype 5 linewidth 5 linecolor "green" title "erf(x)",\$(void)' >> $(SCRIPT1)
 	$(PLOTTER) $(SCRIPT1)
-	gv $@
+	$(IMAGE_VIEW) $@
 
 
 
@@ -88,6 +89,6 @@ task_c: task_c.c
 
 .PHONEY: clean
 clean:
-	$(RM) *.txt
+	$(RM) *.txt *.$(FORMAT) *.gpi
 	find ./ -type f -executable -delete
 

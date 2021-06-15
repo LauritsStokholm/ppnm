@@ -2,6 +2,10 @@
 #include <stdio.h>
 #define TINY 1e-6
 
+/* ............................................................
+ * This exercises introduces structures; specifically we define
+ * our own customisable "complex-number" structure komplex.
+ * ............................................................ */
 int main(void)
 {
   // Initialize structures

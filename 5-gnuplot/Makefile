@@ -16,12 +16,12 @@ SCRIPT1 = log_erf.gpi
 SCRIPT2 = log_my_tgamma.gpi
 SCRIPT3 = log_my_lgamma.gpi
 SCRIPT4 = log_my_cgamma.gpi
-FORMAT = eps
+FORMAT = svg
 PLOTTER = gnuplot
 void =
 
 #==============================================================================#
-TARGETS = erf.eps my_tgamma.eps my_lgamma.eps my_cgamma.eps
+TARGETS = erf.$(FORMAT) my_tgamma.$(FORMAT) my_lgamma.$(FORMAT) my_cgamma.$(FORMAT)
 # Remember: $^ (prerequisite) and $@ (target)
 #==============================================================================#
 
@@ -48,7 +48,7 @@ my_cgamma.$(FORMAT): my_cgamma_out.txt Makefile my_cgamma_in.txt
 #	echo 'set cntrparam levels incr -0.5, 0.25, 5' >> $(SCRIPT4)
 	echo 'splot "$<" u "x":"y":"z" w l lc "black"' >> $(SCRIPT4)
 	$(PLOTTER) $(SCRIPT4)
-	gv $@
+	ristretto $@
 #==============================================================================#
 # LOGGAMMAFUNCTION
 my_lgamma.$(FORMAT): my_lgamma_out.txt Makefile
@@ -68,7 +68,7 @@ my_lgamma.$(FORMAT): my_lgamma_out.txt Makefile
 	echo '"$(word 1, $^)" using "x":"gsl"  with lines linetype 1 dashtype 3 linewidth 5 linecolor "grey"  title "gsl",           \$(void)' >> $(SCRIPT3)
 	echo '"$(word 1, $^)" using "x":"my"   with lines linetype 1 dashtype 3 linewidth 5 linecolor "black" title "self-defined",  \$(void)' >> $(SCRIPT3)
 	$(PLOTTER) $(SCRIPT3)
-	gv $@
+	ristretto $@
 
 #==============================================================================#
 # GAMMAFUNCTION
@@ -96,7 +96,7 @@ my_tgamma.$(FORMAT): my_tgamma_out.txt Makefile
 	echo 'point using (3):(2) pt 2 ps 1 lc "black" notitle, \$(void)' >> $(SCRIPT2)
 	echo 'point using (4):(6) pt 2 ps 1 lc "black" notitle, \$(void)' >> $(SCRIPT2)
 	$(PLOTTER) $(SCRIPT2)
-	gv $@
+	ristretto $@
 #==============================================================================#
 
 my_tgamma_out.txt my_lgamma_out.txt my_cgamma_out.txt: gamma my_tgamma_in.txt my_lgamma_in.txt my_cgamma_in.txt
@@ -145,7 +145,7 @@ erf.$(FORMAT): erf_output.txt Makefile
 	echo '"$(word 1, $^)" using "x":"gslerf"  with lines linetype 1 dashtype 2 linewidth 5 linecolor "grey"  title "gsl", \$(void)' >> $(SCRIPT1)
 	echo '"$(word 1, $^)" using "x":"myerf"   with lines linetype 1 dashtype 3 linewidth 5 linecolor "black" title "self-defined"'             >> $(SCRIPT1)
 	$(PLOTTER) $(SCRIPT1)
-	gv $@
+	ristretto $@
 
 # Output of main
 erf_output.txt: erf erf_input.txt

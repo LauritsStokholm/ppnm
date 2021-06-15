@@ -1,0 +1,8 @@
+This exercise is about the GSL integration routine QAGS
+
+1) Calculate the integral of ln(x)/sqrt(x) over [0, 1]
+2) (optional) Using one of the GSL integration routines, implement the 
+error-function using its integral representation. Make a plot.
+
+3) Using one of the GSL integration routines, implement the Bessel function (of
+the first kind) using its integral representation.

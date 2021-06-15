@@ -45,6 +45,34 @@ double gaussian (double x, void* params)
   return sum;
 }
 
+double gaussian_derivative (double x, void* params)
+{
+  vector* ANNparams = (vector*) params;
+
+  int n = ANNparams->size / 3.;
+  double ai, bi, wi, xi;
+
+  double sum = 0;
+  for (int i=0; i<n; i++)
+  {
+    ai = vector_get (ANNparams, 3*i);
+    bi = vector_get (ANNparams, 3*i+1);
+    wi = vector_get (ANNparams, 3*i+2);
+
+    xi = (x - ai) / bi;
+    sum += (-2*xi/bi)*wi*exp(-xi*xi);
+  }
+  return sum;
+}
+
+double gaussian_integ (double xmin, double x, double epsabs, double epsrel, void* params)
+{
+  double result, error;
+  adaptive_integrator (gaussian, params, xmin, x, epsabs, epsrel, &result, &error);
+  return result;
+}
+
+
 double gaussian_wavelet (double x, void* params)
 {
   vector* ANNparams = (vector*) params;
@@ -84,5 +112,71 @@ double wavelet (double x, void* params)
   }
   return sum;
 }
+
+
+double my_wavelet (double x, void* params)
+{
+  vector* ANNparams = (vector*) params;
+
+  int n = ANNparams->size / 3.;
+  double ai, bi, wi, xi;
+
+  double sum = 0;
+  for (int i=0; i<n; i++)
+  {
+    ai = vector_get (ANNparams, 3*i);
+    bi = vector_get (ANNparams, 3*i+1);
+    wi = vector_get (ANNparams, 3*i+2);
+
+    xi  = (x - ai) / bi;
+    sum += wi*xi*xi*sin(xi);
+  }
+  return sum;
+}
+
+double my_wavelet_dif (double x, void* params)
+{
+  vector* ANNparams = (vector*) params;
+
+  int n = ANNparams->size / 3.;
+  double ai, bi, wi, xi, dxi;
+
+  double sum = 0;
+  for (int i=0; i<n; i++)
+  {
+    ai = vector_get (ANNparams, 3*i);
+    bi = vector_get (ANNparams, 3*i+1);
+    wi = vector_get (ANNparams, 3*i+2);
+
+    xi  = (x - ai) / bi;
+    dxi = 1./bi;
+    sum += 2*wi*xi*dxi*sin(xi) + dxi*wi*xi*xi*cos(xi);
+  }
+  return sum;
+}
+
+double my_wavelet_int (double x, double xmin, double xmax, void* params)
+{
+  vector* ANNparams = (vector*) params;
+
+  int n = ANNparams->size / 3.;
+  double ai, bi, wi, xi;
+
+  double sum = 0;
+  for (int i=0; i<n; i++)
+  {
+    ai = vector_get (ANNparams, 3*i);
+    bi = vector_get (ANNparams, 3*i+1);
+    wi = vector_get (ANNparams, 3*i+2);
+
+    xi  = (x - ai) / bi;
+    sum += wi*
+
+      wi*xi*xi*sin(xi);
+  }
+  return sum;
+}
+
+
 
 #endif

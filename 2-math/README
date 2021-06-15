@@ -1,3 +1,8 @@
+/* ............................................................
+ * This exercise is two-fold; first introducing special mathematical functions, also
+ * of complex variables, and then goes on to look at precision numbers.
+ * ............................................................ */
+
 Calculate, using mathematical functions form <math.h> and <cmath.h> (or <tgmath.h>); :
 Gamma function gamma(5). Hint: man -k gamma.
 Bessel function J1(0.5). Hint: man -k bessel.

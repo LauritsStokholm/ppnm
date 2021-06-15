@@ -1,5 +1,5 @@
-set terminal eps
-set output "my_tgamma.eps"
+set terminal svg
+set output "my_tgamma.svg"
 set key out
 set title "Comparison of Gammafunctions"
 set grid

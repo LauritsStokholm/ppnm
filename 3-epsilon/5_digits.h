@@ -43,6 +43,7 @@ void name_digit(int i){
 }
 
 int digits(void){
+printf("For-loop over arguments for testing.\n");
   for(int i=0; i<11; i++){name_digit(i);}
   return 0;
 }

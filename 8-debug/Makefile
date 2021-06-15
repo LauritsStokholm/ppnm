@@ -1,8 +1,16 @@
 CFLAGS = -o -w -std=gnu99
+
+# Changed FLAGS and LIBS from single quotation (weak), to correct Make syntax
 CFLAGS += $$(gsl-config --cflags) # Changed
 LDLIBS += $$(gsl-config --libs)
 
-all: output ; cat $< # Changed $@ (which refers to all) to $< (output)
-output: main ; ./$< > $@ # Changed $@ to ./$< and $< to $@
-clean: ; $(RM) main output #Changed $RM to $(RM)
+# Changed $@ (which refers to all) to $< (output)
+all: output ; cat $<
+
+
+# Changed $@ to ./$< and $< to $@
+output: main ; ./$< > $@
+
+#Changed $RM to $(RM), since $ would act on R only if no parenthesis
+clean: ; $(RM) main output
 

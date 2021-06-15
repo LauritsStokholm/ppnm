@@ -1,5 +1,5 @@
-set terminal eps
-set output "my_lgamma.eps"
+set terminal svg
+set output "my_lgamma.svg"
 set key out
 set title "Comparison of Logarithmic Gammafunctions"
 set grid

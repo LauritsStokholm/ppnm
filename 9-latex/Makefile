@@ -9,10 +9,19 @@ HEADER = $(SLASH)$(SLASH)bfseries #and other settings
 OBJECTS = exp.tex output.txt
 LATEXTERMINAL = cairolatex pdf input blacktext header "$(HEADER)" font ",12" size 3.06, 3.06
 
+all: main.pdf
 
+
+# Use latexmk for proper handling of latex compilation!
+# -pdf tells latexmk to generate PDF directly (instead of DVI).
+# -pdflatex="" tells latexmk to call a specific backend with specific options.
+# -use-make tells latexmk to call make for generating missing files.
+
+# -interaction=nonstopmode keeps the pdflatex backend from stopping at a
+# missing file reference and interactively asking you for an alternative.
 main.pdf: main.tex exp.tex
-	pdflatex $<
-	gv $@
+	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" $<
+	evince $@
 
 # To know size (given in inches pr. default/ can be set to cm)
 # I have put \showthe\columnwidth at place in .tex file for plot to be,
@@ -48,7 +57,9 @@ output.txt: main
 main: main.c
 
 clean:
-	$(RM) *.aux *.log *.pdf *.fls *.dvi *.fdb_latexmk *.synctex.gz *.bcf *.eps *.out *.run.xml *.pyg *.bbl *.blg
-	$(RM) $(OBJECTS)
 	find ./ -type f -executable -delete
+	latexmk -CA
+	$(RM) *.run.xml *.bbl *.txt
+#	$(RM) *.aux *.log *.pdf *.fls *.dvi *.fdb_latexmk *.synctex.gz *.bcf *.eps *.out *.run.xml *.pyg *.bbl *.blg *.gpi
+#	$(RM) $(OBJECTS)
 

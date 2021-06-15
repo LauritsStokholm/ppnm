@@ -14,7 +14,7 @@ void =
 
 #==============================================================================#
 # Figure task a
-fit.$(FORMAT): datapoints.txt fit.txt
+fit.$(FORMAT): datapoints.txt fit.txt Makefile
 	echo 'set terminal eps' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
@@ -23,8 +23,12 @@ fit.$(FORMAT): datapoints.txt fit.txt
 	echo 'set xlabel "x"' >> $(SCRIPT)
 	echo 'set ylabel "y"' >> $(SCRIPT)
 	echo 'plot \$(void)' >> $(SCRIPT)
-	echo '"$(word 1, $^)"   using 1:2  with p title "datapoints" \$(void)' >> $(SCRIPT)
-	echo ', "$(word 2, $^)" using 1:2  with l title "ann fit" \$(void)' >> $(SCRIPT)
+	echo '"$(word 1, $^)"   using 1:2  with p title "datapoints f" \$(void)' >> $(SCRIPT)
+	echo ', "$(word 1, $^)" using 1:3  with p title "datapoints df" \$(void)' >> $(SCRIPT)
+	echo ', "$(word 1, $^)" using 1:4  with p title "datapoints F" \$(void)' >> $(SCRIPT)
+	echo ', "$(word 2, $^)" using 1:2  with l title "ann fitted f" \$(void)' >> $(SCRIPT)
+	echo ', "$(word 2, $^)" using 1:3  with l title "ann fitted df" \$(void)' >> $(SCRIPT)
+	echo ', "$(word 2, $^)" using 1:4  with l title "ann fitted F" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
 	gv $@
 

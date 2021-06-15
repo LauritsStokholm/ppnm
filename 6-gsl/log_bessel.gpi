@@ -1,5 +1,5 @@
-set terminal eps
-set output "bessel.eps"
+set terminal svg
+set output "bessel.svg"
 set key out
 set title "Implementation of bessel(x) comparison"
 set grid

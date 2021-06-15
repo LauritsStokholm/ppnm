@@ -1,0 +1,15 @@
+Monte Carlo method: 
+
+Estimate the number PI using the Monte Carlo method
+(https://en.wikipedia.org/wiki/Monte_Carlo_method#Overview)
+
+Using the
+
+A) Build a multiprocessing program with pthreads that implements the above
+algorithm. HINT: Do not use rand as RNG, it is not necessarily thread-safe:
+Read: man rand_r and use rand_r instead.
+
+
+B) (Optional) Do the same using OpemMP.
+C) (Optional) Investigate the convergence of the result as function of N (probably 1/√N).
+D) (Optional) Do the above exercises using one of the quasi-random (low-descrepancy) generators from GSL.

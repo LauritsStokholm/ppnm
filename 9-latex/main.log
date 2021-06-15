@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2021.3.11)  11 MAR 2021 04:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.11)  15 JUN 2021 13:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -469,10 +469,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 105.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
-File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen181
 \Gin@req@width=\dimen182
@@ -647,7 +647,7 @@ Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
@@ -962,27 +962,20 @@ ass
 \c@memhycontfloat=\count461
 \c@Hpagenote=\count462
 )
-Package hyperref Info: Driver (default): hdvips.
+Package hyperref Info: Driver (autodetected): hpdftex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
-File: hdvips.def 2020/01/14 v7.00d Hyperref driver for dvips
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
-File: pdfmark.def 2020/01/14 v7.00d Hyperref definitions for pdfmark specials
-\pdf@docset=\toks33
-\pdf@box=\box54
-\pdf@toks=\toks34
-\pdf@defaulttoks=\toks35
-\HyField@AnnotCount=\count463
-\Fld@listcount=\count464
-\c@bookmark@seq@number=\count465
-
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 )
+\Fld@listcount=\count463
+\c@bookmark@seq@number=\count464
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
 (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
@@ -990,7 +983,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
 \Hy@SectionHShift=\skip277
-))
+)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
@@ -1022,15 +1015,10 @@ Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
 
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
-File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
-\l__pdf_internal_box=\box55
-\g__pdf_backend_object_int=\count466
-\l__pdf_backend_content_box=\box56
-\l__pdf_backend_model_box=\box57
-\g__pdf_backend_annotation_int=\count467
-\g__pdf_backend_link_int=\count468
-\g__pdf_backend_link_sf_int=\count469
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count465
+\l__pdf_internal_box=\box54
 )
 (./main.aux)
 \openout1 = `main.aux'.
@@ -1052,10 +1040,13 @@ LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Info: Redefining \microtypecontext on input line 11.
-Package microtype Info: Generating DVI output.
+Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: No font expansion.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+LaTeX Info: Redefining \showhyphens on input line 11.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1063,7 +1054,29 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\c@lstlisting=\count470
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count466
+\scratchdimen=\dimen266
+\scratchbox=\box55
+\nofMPsegments=\count467
+\nofMParguments=\count468
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count469
+\MPscratchDim=\dimen267
+\MPnumerator=\count470
+\makeMPintoPDFobject=\count471
+\everyMPtoPDFconversion=\toks34
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count472
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1080,18 +1093,15 @@ Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
 Package biblatex Info: Reference section=0 on input line 11.
 Package biblatex Info: Reference segment=0 on input line 11.
-\AtBeginShipoutBox=\box58
+\AtBeginShipoutBox=\box56
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: dvips.def on input line 147.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 147.
+)
 Package hyperref Info: Link coloring ON on input line 11.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1103,7 +1113,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count471
+\c@section@level=\count473
 LaTeX Info: Redefining \Ref on input line 520.
 )
 Redoing nameref's sectioning
@@ -1117,13 +1127,9 @@ LaTeX Info: Redefining \nameref on input line 11.
 \openout5 = `main.out'.
 
 LaTeX Info: Redefining \Ref on input line 11.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
 7.
-(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
@@ -1206,83 +1212,75 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 32.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-LaTeX Warning: Citation 'john_napier_wiki' on page 1 undefined on input line 50
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--57
-\T1/lmr/m/n/10.95 eq. ([][][][][][]) is the ana-logue to the slide
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 48--57
-\T1/lmr/m/n/10.95 rule of log-a-rithms as first used by John
- []
-
-[1
-
-
-] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 )
-Overfull \hbox (28.66202pt too wide) in paragraph at lines 107--108
-[][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (28.66202pt too wide) in paragraph at lines 121--122
+[][][][][][][][][][][][][][][][][] 
  []
 
 (./exp.tex
 \gptboxheight=\skip278
 \gptboxwidth=\skip279
-\gptboxtext=\box59
-
-
-! LaTeX Error: File `exp' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.153     \put(0,0){\includegraphics{exp}}
-                                          %
-? 
+\gptboxtext=\box57
+<exp.pdf, id=60, 220.825pt x 220.825pt>
+File: exp.pdf Graphic file (type pdf)
+<use exp.pdf>
+Package pdftex.def Info: exp.pdf  used on input line 153.
+(pdftex.def)             Requested size: 220.82445pt x 220.82445pt.
 ) [2]
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/lmr/m/sc/10.95'.
+(microtype)             Ignoring protrusion settings for this character.
+ [3
 
-LaTeX Warning: Empty bibliography on input line 135.
-
-[3
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
+ <./exp.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 137.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 154.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7C7D85F8ECB561C90685578849BB7C06;162.
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: CBE0C517107923758449483582E4AF75;211.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23525 strings out of 481240
- 394554 string characters out of 5920403
- 1122070 words of memory out of 5000000
- 38455 multiletter control sequences out of 15000+600000
- 623253 words of font info for 94 fonts, out of 8000000 for 9000
+ 23972 strings out of 481239
+ 400917 string characters out of 5920377
+ 1123324 words of memory out of 5000000
+ 38769 multiletter control sequences out of 15000+600000
+ 635138 words of font info for 146 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,11n,53p,1149b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,53p,1149b,1668s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/shar
+e/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
+m-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/f
+onts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on main.dvi (3 pages, 19688 bytes).
+Output written on main.pdf (3 pages, 304312 bytes).
+PDF statistics:
+ 166 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 35366 words of extra memory for PDF output out of 35830 (max. 10000000)
+

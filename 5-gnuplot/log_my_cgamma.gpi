@@ -1,5 +1,5 @@
-set terminal eps
-set output "my_cgamma.eps"
+set terminal svg
+set output "my_cgamma.svg"
 set title "Absolute value of complex Gamma function"
 set nokey; set grid
 set xlabel "Re(z)"; set ylabel "Im(z)"; set zlabel "|G(z)|"

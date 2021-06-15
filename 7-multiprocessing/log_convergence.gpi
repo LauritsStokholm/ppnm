@@ -1,6 +1,6 @@
 \
-set terminal "eps";\
-set output "convergence.eps";\
+set terminal "svg";\
+set output "convergence.svg";\
 set title "Monte Carlo calculation of pi";\
 set logscale x; set logscale y;\
 set xlabel "Number of points; N"; set ylabel "Absolute error";\

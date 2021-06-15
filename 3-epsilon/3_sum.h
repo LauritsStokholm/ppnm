@@ -19,9 +19,9 @@ sum (void)
 
   int xn = INT_MAX/3;
 
-  printf("IF ONE TRIES WITH xn = 10 or xn = 1000, one see the effect on \
-      floating point precision series. They actually do diverge, depending\
-      on summing up or down. Amazing!"); 
+  printf("IF ONE TRIES WITH xn = 10 or xn = 1000, one see the effect on\
+floating point precision series. They actually do diverge, depending\
+on summing up or down.");
 
  /* Do-While-Loops */
   float sum_up_float_dowhile = 0;
@@ -129,6 +129,8 @@ longdouble are :\n");
   printf("%lg\t (dowhile) \n%lg\t (while) \n%lg (for) \n", sum_down_double_dowhile, sum_down_double_while, sum_down_double_for);
   printf("Long double values:\n");
   printf("%Lg\t (dowhile) \n%Lg\t (while) \n%Lg (for) \n", sum_down_longdouble_dowhile, sum_down_longdouble_while, sum_down_longdouble_for);
+
+  printf ("\n\n");
 
   return 0;
 }

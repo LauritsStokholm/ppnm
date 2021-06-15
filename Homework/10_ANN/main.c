@@ -2,20 +2,23 @@
 #include "library.c" // Vector library
 #include "nmsimplex.c"
 #include "qnewton.c"
+#include "adapt.c"
 
 #include "ann.h"
 #include "ann.c"
 #include "activation_functions.c"
 
-double function_to_fit (double x) {return cos(x);}
+double function_to_fit (double x) {return x*cos(x);}
+double function_to_fit_deriv (double x) {return cos(x)-x*sin(x);}
+double function_to_fit_integ (double x, double xmin) {return cos(x)+x*sin(x) - cos(xmin) - xmin*sin(xmin);}
 
 int
 main (int argc, char **argv)
 {
  /* INITIALISATION */
-  int n = 3; // Number of hidden-neurons
-  double eps = 1e-6; // Precision of minimisation
-  ann* ann_gauss = ann_alloc (n, &gaussian);
+  int n = 20; // Number of hidden-neurons
+  double eps = 1e-12; // precision of minimisation
+  ann* ann_gauss = ann_alloc (n, &gaussian, &gaussian_derivative, &gaussian_integ);
 
   // Setting Supervised learning data
   double xmin = 0, xmax = 2*M_PI;  // Domain of interest (interval
@@ -34,7 +37,7 @@ main (int argc, char **argv)
   }
 
   // Initialisation of parameters for ANN stucture
-  ann_init_p    (ann_gauss, xmin, xmax);
+  ann_init_p (ann_gauss, xmin, xmax);
   ann_supervised_train (ann_gauss, xvals, yvals, &costfunction, eps);
 
   // iterate over data for plotting
@@ -43,15 +46,19 @@ main (int argc, char **argv)
   {
     double x = vector_get (xvals, i);
     double y = vector_get (yvals, i);
-    fprintf (fp, "%lg\t%lg\n", x, y);
+    double dy = function_to_fit_deriv(x);
+    double Y  = function_to_fit_integ(x, xmin);
+    fprintf (fp, "%lg\t%lg\t%lg\t%lg\n", x, y, dy, Y);
   }
 
   FILE* gp = fopen ("fit.txt", "w");
   double dx = 1./64;
   for (double x=xmin; x<=xmax; x+=dx)
   {
-    double y = ann_response (ann_gauss, x);
-    fprintf (gp, "%lg\t%lg\n", x, y);
+    double y  = ann_gauss->f (x, (void*) ann_gauss->parameters);
+    double dy = ann_gauss->df(x, (void*) ann_gauss->parameters);
+    double Y  = ann_gauss->F (xmin, x, 1e-6, 1e-6, (void*) ann_gauss->parameters);
+    fprintf (gp, "%lg\t%lg\t%lg\t%lg\n", x, y, dy, Y);
   }
 
   // Free memory

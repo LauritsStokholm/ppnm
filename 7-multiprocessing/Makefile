@@ -4,8 +4,9 @@ CFLAGS += -pthread
 LDLIBS += -lm -pthread
 
 SCRIPT = log_convergence.gpi
-FORMAT = eps
+FORMAT = svg
 PLOTTER = gnuplot
+IMAGE_VIEWER = ristretto
 
 
 convergence.$(FORMAT): convergence_input.txt convergence_input_omp.txt Makefile
@@ -27,7 +28,7 @@ convergence.$(FORMAT): convergence_input.txt convergence_input_omp.txt Makefile
 	, g(x) with lines title "$$1/\sqrt{N}$$ (OMP)"\
 	' > $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 
 #==============================================================================#
@@ -74,6 +75,6 @@ omp: omp.c
 .PHONEY:clean
 clean:                     # this is "clean" target. it does not depend on anything
 	find ./ -type f -executable -delete
-	$(RM) *.txt *.gpi *.log *.eps
+	$(RM) *.txt *.log *.gpi *.$(FORMAT)
 
 

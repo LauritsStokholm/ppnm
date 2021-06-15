@@ -83,17 +83,16 @@ equality(void)
   int bfh = equal(f, h, tau1, epsilon1);
   int cfh = equal(f, h, tau2, epsilon2);
 
-  printf("To test any equality, we test for the absolute and relative precisions \
-that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2\n");
+  printf("To test any equality, we test for the absolute and relative precisions\
+that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2\n\n");
   printf("We have chosen tau and epsilon of three values (eps_i = tau_i), so:\n");
-  printf("tau0=epsilon0=%lg\n tau1=epsilon0=%lg\n tau2=epsilon0=%lg\n", tau0, tau1, tau2);
-  printf("Which are DBL_EPSILON, FLT_EPSILON and 1\n");
-  printf("As test, we the constants; PI, EULERS NUMBER and GRAVITATIONAL ACCELERATION (at earth)\n");
-  printf("Where for PI we have PI, PI+DBL_EPSILON and 3\n");
-  printf("EULERS_NUMBER (E) we have E, E+DBL_EPSILON and 2\n");
-  printf("GRAVITATIONAL CONSTANT (G) we have G, G+DBL_EPSILON and PI*PI\n");
+  printf("tau0=epsilon0=%lg\t\t(DBL_EPSILON)\n", tau0);
+  printf("tau1=epsilon0=%lg\t\t(FLT_EPSILON)\n", tau1);
+  printf("tau2=epsilon0=%lg\n", tau2);
 
+  printf("Subjects for the tests are the following constants; PI, EULERS NUMBER and GRAVITATIONAL ACCELERATION (at earth)\n");
  /* PI */
+  printf("PI, PI+DBL_EPSILON and 3\n");
   printf("Let x=%lg, y=%lg, z=%lg\n", x, y, z);
   printf("Is x=y? (by varying precision of 0, 1, 2)\n");
   printf("%i\n%i\n%i\n", axy, bxy, cxy);
@@ -101,6 +100,7 @@ that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2\n");
   printf("%i\n%i\n%i\n", axz, bxz, cxz);
 
  /* EULERS NUMBER */
+  printf("EULERS_NUMBER (E), E+DBL_EPSILON and 2\n");
   printf("Let l=%lg, m=%lg, k=%lg\n", l, m, k);
   printf("Is l=m? (by varying precision of 0, 1, 2)\n");
   printf("%i\n%i\n%i\n", alm, blm, clm);
@@ -108,6 +108,7 @@ that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2\n");
   printf("%i\n%i\n%i\n", alk, blk, clk);
 
  /* GRAVITATIONAL NUMBER */
+  printf("GRAVITATIONAL CONSTANT (G) G+DBL_EPSILON and PI*PI\n");
   printf("Let f=%lg, g=%lg, h=%lg \n", f, g, h);
   printf("Is f=g? (by varying precision of 0, 1, 2)\n");
   printf("%i\n%i\n%i\n", afg, bfg, cfg);
@@ -115,5 +116,6 @@ that is, if |a-b|<tau and |a-b|/|a+b| < epsilon/2\n");
   printf("%i\n%i\n%i\n", afh, bfh, cfh);
 
   printf("This is as expected, so we continue..\n");
+  printf("\n\n");
   return 0;
 }

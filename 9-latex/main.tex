@@ -68,38 +68,52 @@ Irrefutably vital without exception for the entire field of mathematics and
 thus also of the natural sciences.
 
 \section{Numerical Implementation}
-In this section a numerical implemtation of the exponential function will be
+In this section a numerical implementation of the exponential function will be
 described. Here, we take ground in the series expansion of \cref{eq:series}.
 A naive method would be to hard code a finite degree polynomial estimation of
-the series expansion. This would lead to the following downsides and
-considerations:
-\begin{itemize}
+the series expansion; that is a finite sum with a cut-off. 
+This would lead to the following downsides and considerations:
+\begin{enumerate}
   \item Each term varies in size exponentially and thus as the total sum is
     computed in sequence from left to right, a numerical error is introduced.
   \item A large number of functional operations will surely be called, unless
     an explicit consideration to this is written.
     For instance, instead of utilising the power function for
-    each term, one can reduce this number by isolating a common factor out.
-  \item Even further, using the quicker multiplication operator instead of the
-    power function, compilation time will be lowered.
+    each term, one can reduce the number of function calls by factorising
+    common factors out.
+  \item Even further, relying on the basis operations of addition and
+    multiplication instead of the power function, the compilation time will be
+    lowered.
   \item Since the series expansion will be estimated by a finite sum, then for
     large values of the argument, the series approximation will diverge from
     the exact series expansion.
-  \item In case of a negative argument, every uneven term will be negative, and
+  \item In case of a negative argument, every uneven term will be negative
     and thus another source of error is introduced by adding positive and
     negative terms.
 
-\end{itemize}
+\end{enumerate}
 Luckily, these considerations are not too tedious. There exists a
 ``quick-and-dirty" method to estimate the series expansion \cref{eq:series};
-giving a numerical implementation of the exponential function. This is given in
-\cref{fig:code}. First of all, the terms are monotonically increasing, so the addition
-is less error prone. Secondly, there is defined a handler for relatively large
+giving a numerical implementation of the exponential function. The results can
+be found on \cref{fig:code}. 
+
+First of all, it meets the 1st, 2nd and 3rd point in the previous list of considerations; 
+by factorisation and relying on basic operations. Evenmore, the terms
+are monotonically increasing, so the addition
+is less error prone. Also the function is defined recursively with a handler for relatively large
 values of the argument, such that the series expansion is always for small
-arguments. Lastly, for negative values the addition is summed using strictly
+arguments. This can be written out, by noting that
+\begin{equation}
+  \exp(x) = \exp\left(\frac{x}{2}\right)^2, % \nonumber
+\end{equation}
+so, for large arguments, the argument will recursively be halfed, untill a
+small enough argument is met. In this project, the boundary is chosen at
+$\frac{1}{8}$. The cut-off is chosen at the tenth term.
+Lastly, for negative values, the function returns the inverse of the
+function evaluated at the absolute value of the argument. The addition is summed using strictly
 positive terms.
 \cref{eq:series}.
-\begin{figure}[ht]
+\begin{figure}[b]
 \begin{lstlisting}[language=c]
 double my_exp(double x)
 {
@@ -124,6 +138,7 @@ paper implementation.}
 \label{fig:exp.tex}
 \end{figure}
 
+\newpage
 \section{Conclusion}
 The residuals of this quick and dirty implementation compared to the
 exponential function given in the mathematical header \textsl{math.h} is of the
@@ -132,6 +147,8 @@ is very good. The cutoff at the 10th term was arbitrary, and one could of
 course consider a higher degree polynomial estimation. All in all, we
 can conclude a successfull implementation of the exponential function.
 
-\printbibliography
+\section{Bibliography}
+\printbibliography[heading=none]
+\nocite{*}
 
 \end{document}

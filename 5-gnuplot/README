@@ -1,0 +1,39 @@
+This exercise is about the plotting tool gnuplot:
+
+Plot the error-function with tabulated values (as a test) by
+1) erf from math.h
+2) gsl_sf_erf from GSL
+3) an implemented approximation
+
+/----------------------------------------------------------------------------/
+double myerf(double x){
+/// single precision error function (Abramowitz and Stegun, from Wikipedia)
+if(x<0) return -myerf(-x);
+double a[]={0.254829592,-0.284496736,1.421413741,-1.453152027,1.061405429};
+double t=1/(1+0.3275911*x);
+double sum=t*(a[0]+t*(a[1]+t*(a[2]+t*(a[3]+t*a[4]))));/* the right thing */
+return 1-sum*exp(-x*x);
+}
+/----------------------------------------------------------------------------/
+
+
+Plot the gamma-function with tabulated values (factorials) as a test.
+1) tgamma from math.h
+2) gsl_sf_gamma from GSL
+3) Stirling approximation
+
+/----------------------------------------------------------------------------/
+double mygamma(double x){
+///single precision gamma function (Gergo Nemes, from Wikipedia)
+if(x<0)return M_PI/sin(M_PI*x)/mygamma(1-x);
+if(x<9)return mygamma(x+1)/x;
+double lnmygamma=x*log(x+1/(12*x-1/x/10))-x+log(2*M_PI/x)/2;
+return exp(lnmygamma);
+}
+/----------------------------------------------------------------------------/
+Do the same with the logarithm of the gamma function
+
+
+Implement the gamma function of complex variables (use the formula from
+wikipedia) and plot a 3d plot of the absolute value of the Gamma function in
+the complex plane.

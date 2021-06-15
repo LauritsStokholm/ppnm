@@ -1,0 +1,12 @@
+This exercise is about the GSL matrix structure.
+
+A) (Mandatory) Consider the following system of linear equations in the matrix form,
+[  6.13  -2.90   5.86  ] [x0]     [6.23]
+[  8.08  -6.31  -3.89  ] [x1]  =  [5.37]
+[ -4.36   1.00   0.19  ] [x2]     [2.29]
+
+a1) Solve it using GSL's [Householder solver for linear systems].
+
+a2) Check that you have the correct solution by multiplying the original matrix (you need to save a copy of it as the routine destroys the matrix it is given) and the solution and comparing with the right-hand-side.
+
+B) (Optional) Compute the eigenvalues and eigenvectors of 4-th order Hilbert matrix, Hij = 1/(i + j + 1).
