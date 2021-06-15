@@ -7,7 +7,8 @@ LDLIBS += $$(gsl-config --libs)
 #==============================================================================#
 # For gnuplot
 SCRIPT = log.gpi
-FORMAT = eps
+FORMAT = svg
+IMAGE_VIEWER = ristretto
 PLOTTER = gnuplot
 void =
 
@@ -15,7 +16,7 @@ void =
 
 # Figure 1
 myPlot.$(FORMAT): Rutherford.data myplot.data Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
 	echo 'set title "Ordinary Least-Squares fit by QR-decomposition"' >> $(SCRIPT)
@@ -28,7 +29,7 @@ myPlot.$(FORMAT): Rutherford.data myplot.data Makefile
 	echo ', "$(word 2, $^)" using 1:3 with lines dt 1 lc "black" title "Fval" \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" using 1:4 with lines dt 2 lc "black" title "Fmax" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 #==============================================================================#
 
 # Output of main

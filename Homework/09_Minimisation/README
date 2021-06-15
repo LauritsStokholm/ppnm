@@ -1,0 +1,32 @@
+Objective: Implement the quasi-newton minimisation method with numerical
+gradient, back-tracking linesearch and rank-1 update.
+
+Then find a minimum of the Rosenbrock's valley function, the Himmelblau's
+function and record the number of steps for the algorithm to converge.
+
+Given data from an experiment involving the Higgs boson, the Breit-Wigner
+function is fitted and the mass and width of the Higgs boson is determined as
+parameters by minimisation.
+
+Lastly a downhill simplex method is implemented.
+
+/-----------------------------------------------------------------------------
+Overview:
+
+1) higgs.dat   contains the given data for fitting Breit-Wigner function
+2) main.h      contains a glossary of functions and structures
+3) library.c   contains a personal implementation of a basic linear algebra library
+4) main.c      contains functions calls of each task.
+5) qnewton.c   contains the quasi newton minimisation method with Hessian
+               matrices, where updates are dependent on the numerical Jacobians
+               by finite differences.
+6) mysimplex.c contains my nelder-mead downhill - simplex method, for task C
+               using my own linear algebra structures (see Homework 02)
+7) task_a.c    contains the solution to task A, with Rosenbrock/Himmelblau
+               functions
+8) task_b.c    contains the solution to task B for fitting Breit-Wigner
+               function
+
+All tasks are done. 10/10
+------------------------------------------------------------------------------
+

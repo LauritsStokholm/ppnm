@@ -92,6 +92,7 @@ task_b (void)
   fprintf (fp, "Using qnewton\n");
   nsteps = qnewton (cost, x, (void*) &p, eps);
   fprintf_results  (fp, nsteps, x, (void*) &p, cost);
+  fprintf (fp, "where the parameters are on the form [mass, witdh of sought resonance, width of the Higgs boson]\n");
 
   fprintf (fp, "\nUsing nmsimplex\n");
   vector* start = vector_alloc (3);
@@ -103,6 +104,7 @@ task_b (void)
   double simplex_step_goal = 1e-5;
   nsteps = nmsimplex (cost, start, step, (void*) &p, simplex_step_goal);
   fprintf_results    (fp, nsteps, start, (void*) &p, cost);
+  fprintf (fp, "where the parameters are on the form [mass, witdh of sought resonance, width of the Higgs boson]\n");
 
   vector_free (start);
   vector_free (step);

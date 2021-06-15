@@ -1,0 +1,27 @@
+Objective: This exercise is three-fold.
+
+1) Implement plain Monte Carlo multi-dimensional integration, and
+calculate some interesting integrals with the routine such as:
+
+∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]-1 = Γ(1/4)4/(4π3) ≈
+1.3932039296856768591842462603255
+
+2) Then implement a a MC integrator that uses low-discrepancy (quasi-random)
+sequences. Compare the scaling of the error with pseudo-random MC integrator.
+
+3) Lastly, implement recursive stratified sampling.
+
+/-----------------------------------------------------------------------------
+Overview:
+I have implemented a plain- , low-discrepancy- and recursive stratified - Monte
+Carlo integrator.
+
+1) main.c            contains function-calls for each task.
+2) halton.c          contains the Van der Corput and Halton quasi-random
+                     sequences used for a low-discrepancy monte carlo.
+3) low-discrepancy.c contains the lattice monte carlo (which is not used here)
+4) plainmc.c         contains the plain monte carlo method (Task A)
+5) ssmc.c            contains the stratified sampling monte carlo (Task C)
+
+All tasks are done. 10/10
+------------------------------------------------------------------------------

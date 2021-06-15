@@ -109,7 +109,7 @@ void vector_fprintf (FILE* fp, vector* v)
 {
   for (int i=0; i<v->size; i++)
   {
-    fprintf(fp, "%.4lg\t", vector_get(v, i));
+    fprintf(fp, "%.8lg\t", vector_get(v, i));
     if (i+1 == v->size){fprintf(fp, "\n");}
   }
 }

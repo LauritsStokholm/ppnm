@@ -1,5 +1,5 @@
-set terminal eps
-set output "operations.eps"
+set terminal svg
+set output "operations.svg"
 set key left
 set title "This is a title"
 set grid

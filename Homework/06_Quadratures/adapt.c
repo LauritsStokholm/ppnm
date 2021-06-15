@@ -103,7 +103,7 @@ void adapt_inf (double f(double), double a, double b, double abs, double rel,
 {
   inf_func = f;
 
-  if( (-1)*isinf(a) && isinf(b) )
+  if( ((-1)*isinf(a)) && isinf(b) )
   {
     clenshaw_curtis(inf_inf_wrapper, -1, 1, abs, rel, result, error);
     return;

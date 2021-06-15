@@ -1,0 +1,27 @@
+Objective: Implement functions for interpolation of tabulated data.
+
+Problem:
+
+A) (6 points) Linear spline (linear interpolation)
+a1) Implement a function that interpolates the given tabulated function, {x[i], y[i]}, at a given point z using linear spline interpolation.
+
+The function must first find (by binary search) the interval where z is located, x[i]≤z≤x[i+1], and then calculate the interpolated value using linear spline,
+
+a2) Implement a function that calculates the intergral of the linear spline of the tabulated data from the point x[0] to the given point z. The integral must be calculated analytically,
+
+a3) Make some indicative plots to prove that your linear spline and your
+integrator work as intended. Compare with GSL's [gsl_interp_linear] and
+[gsl_interp_eval_integ].
+
+Location of the index i of the interval containing z, x[i]<z<x[i+1], must(!) be
+done using binary search.
+
+B) (3 points) Quadratic spline
+
+b1) Implement quadratic spline with derivative and integral. Make some illustrative plots.
+
+Note that quadratic splines should only be used for learning, for practical applications always use cubic splines instead.
+
+C) (1 points) Cubic spline
+c1) Implement cubic spline with derivative and integral.
+c2) Compare with the cubic spline routines from GSL.

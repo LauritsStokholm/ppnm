@@ -1,0 +1,7 @@
+In this exercise, the simplest (supervised) Artificial Neural Network (ANN) will be trained
+to interpolate a tabulated function, its derivative and anti-derivative.
+Three different activation functions are utilised; A wavelet, a Gaussian and a
+Gaussian-wavelet.
+
+I did not do task C:
+9/10

@@ -1,4 +1,4 @@
-cc = gcc
+CC = gcc
 CFLAGS += -Wall -pedantic -std=gnu1x $$(gsl-config --cflags)
 LDLIBS += $$(gsl-config --libs)
 
@@ -8,14 +8,15 @@ FILEPOINTER = output.txt
 
 # For gnuplot
 SCRIPT = log.gpi
-FORMAT = eps
+FORMAT = svg
+IMAGE_VIEWER = ristretto
 PLOTTER = gnuplot
 void =
 
 
 # Figure
 operations.$(FORMAT): convergence_input.txt convergence_gsl_input.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key left' >> $(SCRIPT)
 	echo 'set title "This is a title"' >> $(SCRIPT)
@@ -26,7 +27,7 @@ operations.$(FORMAT): convergence_input.txt convergence_gsl_input.txt Makefile
 	echo '"$(word 1, $^)"   u 1:2 w p pt 1 ps 1 t "My implementation"  \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" u 1:2 w p pt 2 ps 1 t "GSL"\$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 
 
@@ -56,4 +57,4 @@ main: main.c
 .PHONEY: clean
 clean:
 	find ./ -type f -executable -delete
-	rm *.txt *.gpi *.log *.eps
+	rm *.txt *.gpi *.log *.eps *.svg

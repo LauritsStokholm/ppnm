@@ -45,7 +45,7 @@ task_a ()
 {
   FILE* fp = fopen ("task_a.txt", "w");
 
-  // Implementations are found in ode.h
+  // Implementations are found in ode.c
   fprintf (fp, "As an example; we consider u'' = -u\n");
 
   // System interval

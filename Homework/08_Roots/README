@@ -1,0 +1,22 @@
+Objective: Implement the Newton's method with numerical Jacobian and
+back-tracking linesearch, and use it the Rosenbrock function. Then solve for
+Bound states of hydrogen atom with shooting bethod for boundary value problems
+and investigate better boundary conditions for the hydrogen atom problem.
+/-----------------------------------------------------------------------------
+Overview: I have solved this with my own implementation (in this folder) and
+using the GSL algorithms (see 08_Roots_GSL)
+
+1) GS_decomp.c contains the Gram-Schmidt method for linear equations (see Homework 02)
+2) main.h      contains a glossary of functions and structures
+3) library.c   contains a personal implementation of a basic linear algebra library
+4) main.c      contains functions calls of each task.
+5) newton.c    contains the Newton's method with numerical Jacobians by finite
+               differences.
+6) ode.c       contains the rkstep implementations for both 12 and 23 
+               (see Homework 05).
+7) task_a.c    contains the solution to task A, with Rosenbrock function
+8) task_bc.c   contains the solution to task B and C for Hydrogen atom
+
+All tasks are done. 10/10
+------------------------------------------------------------------------------
+

@@ -1,14 +1,12 @@
-set terminal eps
-set output "threebody.eps"
+set terminal svg
+set output "harmonic.svg"
 set key out
 set title "This is a title"
 set grid
 set xlabel "x"
 set ylabel "y"
 plot \
-"rk12_threebody.txt"   using 2:3  with lp title "rk12, planet 1" \
-, "rk12_threebody.txt" using 4:5  with lp title "rk12, planet 2" \
-, "rk12_threebody.txt" using 6:7  with lp title "rk12, planet 3" \
-, "rk23_threebody.txt" using 2:3  with lp title "rk23, planet 1" \
-, "rk23_threebody.txt" using 4:5  with lp title "rk23, planet 2" \
-, "rk23_threebody.txt" using 6:7  with lp title "rk23, planet 3" \
+"rk12_harmonic.txt" using 1:2 with lp title "rk12, y0" \
+, "rk12_harmonic.txt" using 1:3 with lp title "rk12, y1" \
+, "rk23_harmonic.txt" using 1:2 with lp title "rk23, y0" \
+, "rk23_harmonic.txt" using 1:3 with lp title "rk23, y1" \

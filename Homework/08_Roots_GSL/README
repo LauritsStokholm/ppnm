@@ -1,0 +1,9 @@
+Objective: This is the implementation of Homework 08_Roots, in GSL. I have
+implemented the following multi-roots algorithms, and compared them (see the
+Rosenbrock plot: contour.png)
+   * - Hybrids
+   * - Hybrid
+   * - dnewton
+   * - broyden
+
+Then for the Hydrogen atom, I decided to use Hybrids.

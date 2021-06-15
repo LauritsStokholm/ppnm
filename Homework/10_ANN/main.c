@@ -37,8 +37,8 @@ main (int argc, char **argv)
   }
 
   // Initialisation of parameters for ANN stucture
-  ann_init_p (ann_gauss, xmin, xmax);
-  ann_supervised_train (ann_gauss, xvals, yvals, &costfunction, eps);
+  ann_init_p (ann_gauss,   xmin, xmax);
+  ann_supervised_train (ann_gauss,   xvals, yvals, &costfunction, eps);
 
   // iterate over data for plotting
   FILE* fp = fopen ("datapoints.txt", "w");
@@ -55,9 +55,9 @@ main (int argc, char **argv)
   double dx = 1./64;
   for (double x=xmin; x<=xmax; x+=dx)
   {
-    double y  = ann_gauss->f (x, (void*) ann_gauss->parameters);
-    double dy = ann_gauss->df(x, (void*) ann_gauss->parameters);
-    double Y  = ann_gauss->F (xmin, x, 1e-6, 1e-6, (void*) ann_gauss->parameters);
+    double y  = ann_gauss  ->f (x, (void*) ann_gauss  ->parameters);
+    double dy = ann_gauss  ->df(x, (void*) ann_gauss  ->parameters);
+    double Y  = ann_gauss  ->F (xmin, x, 1e-6, 1e-6, (void*) ann_gauss  ->parameters);
     fprintf (gp, "%lg\t%lg\t%lg\t%lg\n", x, y, dy, Y);
   }
 
@@ -65,7 +65,6 @@ main (int argc, char **argv)
   fclose (fp); fclose (gp);
   vector_free (xvals); vector_free (yvals);
   ann_free (ann_gauss);
-  //ann_free (ann_gwave);
   //ann_free (ann_waves);
 
   return 0;

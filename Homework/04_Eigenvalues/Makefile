@@ -6,7 +6,8 @@ LDLIBS += $$(gsl-config --libs)
 #==============================================================================#
 # For gnuplot
 SCRIPT = log.gpi
-FORMAT = eps
+FORMAT = svg
+IMAGE_VIEWER = ristretto
 PLOTTER = gnuplot
 void =
 #==============================================================================#
@@ -14,7 +15,7 @@ void =
 # CONVERGENCE TESTS:
 # Figure
 operations.$(FORMAT): convergence_input.txt convergence_gsl_input.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key left' >> $(SCRIPT)
 	echo 'set title "This is a title"' >> $(SCRIPT)
@@ -25,7 +26,7 @@ operations.$(FORMAT): convergence_input.txt convergence_gsl_input.txt Makefile
 	echo '"$(word 1, $^)"   u 1:2 w p pt 1 ps 1 t "My implementation"  \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" u 1:2 w p pt 2 ps 1 t "GSL"\$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 
 
@@ -51,7 +52,7 @@ my_timer: my_timer.c
 
 # Figure 1
 myPlot.$(FORMAT): plot.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
 	echo 'set title "Standing Waves with BDC"' >> $(SCRIPT)
@@ -66,7 +67,7 @@ myPlot.$(FORMAT): plot.txt Makefile
 	echo ', "$(word 1, $^)" u 1:6 w lp ps 0.5 lc "black" dt 3 t "5th" \$(void)' >> $(SCRIPT)
 	#echo ', "$(word 1, $^)" u 1:7 w lp lc "black" dt 6 t "6th" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 #==============================================================================#
 
 task_a.txt energies.txt plot.txt: main

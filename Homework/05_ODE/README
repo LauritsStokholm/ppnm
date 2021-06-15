@@ -1,0 +1,18 @@
+Objective: Implement an embedded Runge-Kutta stepper (for ODE integration).
+Use this on some interesting specific cases, such as
+A) u'' = -u
+B) SIR-model of epidemic development
+C) Newtonian gravitational three-body problem.
+/-----------------------------------------------------------------------------
+Overview:
+
+I have implemented both rkstep12 and rkstep23, which can be seen in all plots.
+1) main.h      contains a glossary of functions and structures
+2) library.c   contains a personal implementation of a basic linear algebra library
+3) main.c      contains functions calls of each task.
+4) task_a.c    contains the X'th task for both A and B (B: store data for plot)
+5) threebody.c contains the task C
+6) ode.c       contains the rkstep implementations for both 12 and 23.
+
+All tasks are done. 10/10
+------------------------------------------------------------------------------

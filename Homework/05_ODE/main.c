@@ -1,6 +1,6 @@
 #include "main.h"
 #include "library.h"
-#include "ode.h"
+#include "ode.c"
 
 #include "task_a.c"
 #include "threebody.c"

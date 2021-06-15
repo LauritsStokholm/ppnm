@@ -5,12 +5,12 @@
  *
  * integral_{0}^{1}  ln(x)/sqrt(x) dx
  *
- * (We quickly notice that ln(x) is not defined for x=0 and that is a
+ * (We quickly notice that ln(x) is not defined for x=0 and that x=0 is a
  * singularity for 1/sqrt(x) aswell.)
  * ..........................................................................*/
 int calls2 = 0;
 
-// We first define our functional (the function to be integrated)
+// Define functional (the function to be integrated)
 double
 integrand(double x, void* params){
   calls2++;
@@ -21,14 +21,12 @@ integrand(double x, void* params){
 int
 my_gsl_integration(void)
 {
-
-  // We initialize a workspace for our integration
+  // Initialize a workspace for integration
   // Maximal number of subintervals
   size_t n = 1000;
   gsl_integration_workspace * W = gsl_integration_workspace_alloc(n);
 
-  // We initialize the result, error objects to hold the values after
-  // integration
+  // Initialize the result, error objects to hold the values after integration
   double result, error;
 
   // The structure of gsl_function to be integrated
@@ -38,10 +36,10 @@ my_gsl_integration(void)
 
   gsl_integration_qags(&F, 0, 1, 0, 1e-7, n, W, &result, &error);
 
-  printf("The results from the gsl implementation can be found here:\n");
-  printf("result = %.18f\n", result);
-  printf("estimated error =%.18f\n", error);
-  printf("intervals = %.18lu\n", W->size);
+  printf ("The results from the gsl implementation can be found here:\n");
+  printf ("result = %.18f\n", result);
+  printf ("estimated error =%.18f\n", error);
+  printf ("intervals = %.18lu\n", W->size);
   printf ("calls = %d", calls2);
 
 
@@ -90,7 +88,7 @@ my_inf_gsl_integration (double a, double b,
   printf("result = %.18f\n", result);
   printf("estimated error =%.18f\n", error);
   printf("intervals = %.18lu\n", W->size);
-  //printf ("calls = %d", calls2);
+  printf("calls = %d", calls2);
 
 
   // When we are done with our allocated memory, we free it.

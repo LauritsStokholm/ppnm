@@ -3,7 +3,7 @@ ROSENBROCK'S VALLEY FUNCTION:
 Using qnewton
 nsteps = 30
 The minimum found is at:
-1	1	
+0.99999986	0.99999971	
 Checking f(x,y)=2.06472e-14
 
 Using nmsimplex
@@ -18,7 +18,7 @@ HIMMELBLAU'S FUNCTION
 Using qnewton
 nsteps = 14
 The minimum found is at:
-3.584	-1.848	
+3.5844283	-1.8481265	
 Checking f(x,y)=2.97351e-15
 
 Using nmsimplex
@@ -33,11 +33,13 @@ HIGGS BOSON
 Using qnewton
 nsteps = 223
 The minimum found is at:
-126	2.086	9.876	
+125.97219	2.086351	9.8763154	
 Checking f(x,y)=26.8695
+where the parameters are on the form [mass, witdh of sought resonance, width of the Higgs boson]
 
 Using nmsimplex
 nsteps = 174
 The minimum found is at:
-126	2.086	9.876	
+125.97219	2.0863294	9.8762092	
 Checking f(x,y)=26.8695
+where the parameters are on the form [mass, witdh of sought resonance, width of the Higgs boson]

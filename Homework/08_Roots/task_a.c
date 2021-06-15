@@ -39,13 +39,20 @@ task_a (void)
   vector_set (r, 0, 1);
   vector_set (r, 1, 2);
 
+  fprintf(fp, "Initial guess / starting point\n");
+  vector_fprintf (fp, r);
+
   // Acceptance tolerance
   double acc = 1e-7;
   newton (Rosenbrock_gradient, r, (void*) &params, acc);
 
-  printf ("Checking the given root\n");
+  fprintf (fp, "Converged: root is found at\n");
+  vector_fprintf (fp, r);
+  fprintf (fp, "Checking the given root\n");
   Rosenbrock_gradient (r, (void*) &params, fx);
-  vector_printf(fx);
+
+  fprintf (fp, "Evaluation at the root gives:\n");
+  vector_fprintf(fp, fx);
 
   fclose(fp);
   vector_free (r);

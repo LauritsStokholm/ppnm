@@ -1,0 +1,7 @@
+Initial guess / starting point
+1	2	
+Converged: root is found at
+1	1	
+Checking the given root
+Evaluation at the root gives:
+-1.79e-13	8.882e-14	

@@ -6,13 +6,18 @@ LDLIBS += $$(gsl-config --libs)
 #==============================================================================#
 # For gnuplot
 SCRIPT = log.gpi
-FORMAT = eps
+FORMAT = svg
+IMAGE_VIEWER = ristretto
 PLOTTER = gnuplot
 void =
 #==============================================================================#
+# Default
+all: threebody.$(FORMAT) SIR.$(FORMAT) harmonic.$(FORMAT)
+
+
 # Figure task a
 threebody.$(FORMAT): rk12_threebody.txt rk23_threebody.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
 	echo 'set title "This is a title"' >> $(SCRIPT)
@@ -27,12 +32,12 @@ threebody.$(FORMAT): rk12_threebody.txt rk23_threebody.txt Makefile
 	echo ', "$(word 2, $^)" using 4:5  with lp title "rk23, planet 2" \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" using 6:7  with lp title "rk23, planet 3" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 #==============================================================================#
 # Figure task a
 SIR.$(FORMAT): rk12_SIR.txt rk23_SIR.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
 	echo 'set title "This is a title"' >> $(SCRIPT)
@@ -47,11 +52,11 @@ SIR.$(FORMAT): rk12_SIR.txt rk23_SIR.txt Makefile
 	echo ', "$(word 2, $^)" using 1:3 with lp title "rk23, I" \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" using 1:4 with lp title "rk23, R" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 
 harmonic.$(FORMAT): rk12_harmonic.txt rk23_harmonic.txt Makefile
-	echo 'set terminal eps' > $(SCRIPT)
+	echo 'set terminal $(FORMAT)' > $(SCRIPT)
 	echo 'set output "$@"' >> $(SCRIPT)
 	echo 'set key out' >> $(SCRIPT)
 	echo 'set title "This is a title"' >> $(SCRIPT)
@@ -64,7 +69,7 @@ harmonic.$(FORMAT): rk12_harmonic.txt rk23_harmonic.txt Makefile
 	echo ', "$(word 2, $^)" using 1:2 with lp title "rk23, y0" \$(void)' >> $(SCRIPT)
 	echo ', "$(word 2, $^)" using 1:3 with lp title "rk23, y1" \$(void)' >> $(SCRIPT)
 	$(PLOTTER) $(SCRIPT)
-	gv $@
+	$(IMAGE_VIEWER) $@
 
 #==============================================================================#
 

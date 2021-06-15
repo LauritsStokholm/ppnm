@@ -1,0 +1,22 @@
+Objective: Implement subroutine that integrates a function f(x) over [a, b]
+with the absolute accuracy goal delta and relative accuracy goal epsilon.
+The subroutine should return the estimate of the integral, Q, with the error
+smaller than delta+epsilon*abs(Q)
+
+/-----------------------------------------------------------------------------
+Overview:
+I have implemented a recursive adaptive integrator (task A) and a
+Clenshaw-Curtis variable transformation for open quadratures (task B), and
+generalised these integrators to accept infinite limits (task C). This was
+compared to the GSL integration routines.
+
+1) main.h      contains a glossary of functions for task A and task B
+2) library.c   contains a personal implementation of a basic linear algebra library
+3) main.c      contains functions calls of each task.
+4) task_a.c    contains the X'th task for both A and B (B: store data for plot)
+5) threebody.c contains the task C
+6) ode.c       contains the rkstep implementations for both 12 and 23.
+
+All tasks are done. 10/10
+(I prefer the formatting for viewing the results in command-line over the result.txt)
+------------------------------------------------------------------------------

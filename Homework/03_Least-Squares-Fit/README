@@ -1,0 +1,14 @@
+Objective: Fit a linear combination of given functions to a (measured) data
+set, with uncertainties of measurements (error-bars).
+
+/-----------------------------------------------------------------------------
+Overview:
+1) main.h      contains a glossary of functions and structures
+2) library.c   contains a personal implementation of a basic linear algebra library
+3) main.c      contains both tasks A and B (see below)
+4) data.c      contains an alternative handling of the data, appropriate for
+               larger data sets. (This was succeded by a quick and dirty method)
+5) utilities.c contains the GS orthogonalisation methods
+
+All tasks are done. 10/10
+/-----------------------------------------------------------------------------

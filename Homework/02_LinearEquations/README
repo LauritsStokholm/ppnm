@@ -1,0 +1,46 @@
+/-----------------------------------------------------------------------------
+Objective: Implement functions to solve linear equations, calculate the inverse
+and the determinant of a matrix.
+/-----------------------------------------------------------------------------
+Overview:
+1) main.h      contains a glossary of functions
+2) library.c   contains a personal implementation of a basic linear algebra library
+3) main.c      contains both tasks A and B (see below)
+4) gsl_timer.c contains the last task C
+5) my_timer.c  contains the task A for comparison
+6) utilities.c contains the GS orthogonalisation methods
+/-----------------------------------------------------------------------------
+Description of project:
+For the task A), a GS_decomp function has been implmented,
+void GS_decomp (matrix* A, matrix* R)
+that performs GS orthogonalisation of an (n, m) matrix, A, assuming n>=m.
+On exit, A is replaced with an orthogonal (n, m) matrix Q, and the matrix R
+is upper-triangular.
+
+This is tested with success; both for square- and tall- stochastic matrices.
+The tests is three-fold, testing whether A = Q*R is true; that R is upper
+triangular and that QT*Q = IDENTITY.
+
+In continuation, a GS_solve function is implemented,
+void GS_solve (matrix* Q, matrix* R, vector* b, vector* x)
+that given the QR-decomposition of a stochastic matrix A, solves the equation
+A*x = Q*R*x = b
+by applying the QT to the vector b, saving the result in vector x and then
+performing in-place back-substitution on x.
+
+The sought solution is tested for equality of A*x and b.
+
+For the task B), a GS_inverse function is implemented
+void GS_inverse (matrix* Q, matrix* R, matrix* B)
+that calculates the inverse of A, saving it in B, given its QR-decomposition.
+
+This is tested for A*B = IDENTITY = B*A
+
+
+For the task C) the QR-decomposition is compared with GSL, constraining the
+analysis to square matrices, the resulting convergence speed of the algorithms
+are compared with variable matrix dimensions. The plot can be found in
+operations.svg
+
+10/10
+/-----------------------------------------------------------------------------

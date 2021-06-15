@@ -104,7 +104,7 @@ caller (int toggle, double rmax)
   vector_set (epsilon, 0, epsilon_guess);
 
   // Acceptance tolerance
-  double acc = 1e-6;
+  double acc = 1e-7;
 
 
   void (*f) (vector* x, void* p, vector* z);
@@ -148,7 +148,7 @@ convergence (int toggle)
   else { fp = fopen ("precision.txt", "w");}
 
   fprintf (fp, "rmax\titer\n");
-  for (double rmax=2; rmax < 10; rmax+=1)
+  for (double rmax=2; rmax < 10; rmax+=0.1)
   {
     int iter = caller (toggle, rmax);
     fprintf (fp, "%lg\t%i\n", rmax, iter);

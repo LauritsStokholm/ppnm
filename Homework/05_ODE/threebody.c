@@ -1,5 +1,5 @@
 #include "main.h"    // Header functions
-#include "ode.h"     // ODE library
+#include "ode.c"     // ODE library
 #include "library.h" // Vector library
 
 void default_setting_of_y (vector* y)

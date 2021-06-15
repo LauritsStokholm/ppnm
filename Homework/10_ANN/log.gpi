@@ -1,7 +1,7 @@
-set terminal eps
-set output "fit.eps"
+set terminal svg
+set output "fit.svg"
 set key out
-set title "This is a title"
+set title "Supervised Artificial Neural Network fit"
 set grid
 set xlabel "x"
 set ylabel "y"
@@ -9,6 +9,6 @@ plot \
 "datapoints.txt"   using 1:2  with p title "datapoints f" \
 , "datapoints.txt" using 1:3  with p title "datapoints df" \
 , "datapoints.txt" using 1:4  with p title "datapoints F" \
-, "fit.txt" using 1:2  with l title "ann fitted f" \
-, "fit.txt" using 1:3  with l title "ann fitted df" \
-, "fit.txt" using 1:4  with l title "ann fitted F" \
+, "fit.txt" using 1:2  with l title "ann fit f" \
+, "fit.txt" using 1:3  with l title "ann fit df" \
+, "fit.txt" using 1:4  with l title "ann fit F" \

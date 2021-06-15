@@ -1,5 +1,5 @@
-set terminal eps
-set output "myPlot.eps"
+set terminal svg
+set output "myPlot.svg"
 set key out
 set title "Ordinary Least-Squares fit by QR-decomposition"
 set grid

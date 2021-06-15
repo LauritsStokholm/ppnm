@@ -2,7 +2,7 @@ CC = gcc
 LDLIBS = $$(gsl-config --libs)
 CFLAGS = $$(gsl-config --cflags) -pedantic -Wall
 
-OBJECTS = main contour.gpi contour.png dnewton.txt broyden.txt hybrid.txt hybrids.txt convergence.txt data2.txt task2.txt swave.png swave.gpi
+OBJECTS = main contour.gpi contour.png dnewton.txt broyden.txt hybrid.txt hybrids.txt convergence.txt data2.txt task2.txt swave.png swave.gpi convergence.gpi convergence.png precision.txt
 
 all: swave.gpi contour.gpi convergence.gpi
 

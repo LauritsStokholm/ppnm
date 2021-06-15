@@ -1,0 +1,60 @@
+Task A: Implementation of a recursive adaptive integrator
+Task B: Implementation of clenshaw curtis variable transf
+Task C: Include integration error, and generalise to infinite limits
+integrand	method		a	b	estimated result	error			actual result	number of calls
+sqrt(x)		(adapt)		0	1	0.666680932893738	0.000165022691889251	0.666667	40
+sqrt(x)		clenshaw-curtis	0	1	0.66666518313053	0.000148882051479357	0.666667	52
+
+
+4sqrt(1-xx)	(adapt)		0	1	3.14159750770263	0.000400522769026153	3.14159		80
+4sqrt(1-xx)	clenshaw-curtis	0	1	3.14158803581732	0.000416340911435302	3.14159		72
+
+
+1/sqrt(x)	(adapt)		0	1	1.99999738796403	0.000335403504083176	2		17140
+1/sqrt(x)	clenshaw-curtis	0	1	1.99999893214015	0.000219690971163885	2		28
+
+
+log(x)/sqrt(x)	(adapt)		0	1	-3.99999834899021	0.000535589886344498	-4		29972
+log(x)/sqrt(x)	clenshaw-curtis	0	1	-3.99998615704781	0.000481732375729684	-4		160
+
+
+NOTE: Notice how the last two examples differ in calls, since log(x) and 1./sqrt(x) is not defined at x=0
+
+Calculate the integral of 4*sqrt(1-x*x) over [0, 1], using GSL
+The results from the gsl implementation can be found here:
+result = -4.000000000000085265
+estimated error =0.000000000000135447
+intervals = 000000000000000008
+calls = 315
+
+
+Task C: Infinite Limits
+integrand	method		a	b		estimated result	error			actual result		#calls
+gaussian	(adapt)	-INFINITY	INFINITY	1.77237673789962	0.000233906605512047	1.77245385090552	120
+
+
+gaussian	(adapt)	0		INFINITY	0.886278220908021	0.000153343539423203	0.886226925452758	68
+
+
+gaussian	(adapt)	-INFINITY	0		0.886278220908021	0.000153343539423215	0.886226925452758	68
+
+
+infinite limits
+The results from the gsl implementation can be found here:
+result = 1.772453850905513661
+estimated error =0.000000034295488720
+intervals = 000000000000000004
+calls = 315
+
+The results from the gsl implementation can be found here:
+result = 0.886226925452756831
+estimated error =0.000000017147744360
+intervals = 000000000000000004
+calls = 315
+
+The results from the gsl implementation can be found here:
+result = 0.886226925452756831
+estimated error =0.000000017147744360
+intervals = 000000000000000004
+calls = 315
+

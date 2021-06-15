@@ -1,0 +1,14 @@
+Objective: Implement the Jacobi algorithm for matrix diagonalisation
+(also called matrix eigenvalue decomposition or eigendecomposition)
+/-----------------------------------------------------------------------------
+Overview:
+1) main.h      contains a glossary of functions and structures
+2) library.c   contains a personal implementation of a basic linear algebra library
+3) main.c      contains functions calls of each task
+4) task_X.c    contains the X'th task for both A and B.
+5) utilities.c contains the two-sided Jacobi method and the sweep method.
+6) gsl_timer.c contains the implementation in GSL for comparison.
+7) my_timer.c  contains the relevant code for comparison of GSL.
+
+All tasks are done. 10/10
+------------------------------------------------------------------------------
