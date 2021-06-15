@@ -1,5 +1,5 @@
-set terminal eps
-set output "operations.svg"
+set terminal png
+set output "operations.png"
 set key left
 set title "Convergence of SVG alg. of square matrices"
 set grid
