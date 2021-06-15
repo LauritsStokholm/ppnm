@@ -8,8 +8,8 @@
 
 // Self-implemented libraries
 #include "main.h"      // header-file for functions, structures
-#include "library.h"   // Library for linear algebra implementation
-#include "utilities.h" // The functions used in SVD
+#include "library.c"   // Library for linear algebra implementation
+#include "utilities.c" // The functions used in SVD
 #include "SVD.c"       // The one-sided Jacobi (SVD) algorithm
 #include "QR_decomp.c" // The QR-decomposition algorithm (for n>m)
 #include "GS_decomp.c" // The Gram-Schmitt algorithm for QR_decomp
@@ -88,7 +88,7 @@ main (int argc, char* argv[])
   matrix_matrix_product (UD, VT, UDVT);
 
   fprintf (fp, "Is A = U*D*VT?\n");
-  fprintf_result_matrix_matrix_test_equal (fp, A, UDVT, 1e-15, 1e-15);
+  fprintf_result_matrix_matrix_test_equal (fp, A, UDVT, 1e-8, 1e-8);
 
 
   matrix_free (A);

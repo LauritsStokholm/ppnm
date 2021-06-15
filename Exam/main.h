@@ -3,13 +3,13 @@
 
 /* ............................................................
  * This is a glossary of definitions, as implemented in the
- * library.h file. Following is a customised implementation of
+ * library.c file. Following is a customised implementation of
  * linear algebra structures such as vectors and matrices; and
  * a lot of usable algorithmic- and algebraic functions on them.
  * ............................................................ */
 
 
-// library.h
+// library.c
 typedef struct {int size; double *data;} vector;
 typedef struct {int size1, size2; double *data;} matrix;
 
@@ -54,7 +54,7 @@ void fprintf_result_vector_vector_test_equal (FILE* fp, vector* v, vector* w, do
 void fprintf_result_matrix_matrix_test_equal (FILE* fp, matrix* A, matrix* B, double epsabs, double epsrel);
 
 
-// utilities.h
+// utilities.c
 void timesJ (matrix* A, int p, int q, double theta);
 int SVD (matrix* A, matrix* V);
 

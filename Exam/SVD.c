@@ -6,8 +6,8 @@
 
 // Self-implemented libraries
 #include "main.h"      // header-file for functions, structures
-#include "library.h"   // Library for linear algebra implementation
-#include "utilities.h" // The functions used in SVD
+#include "library.c"   // Library for linear algebra implementation
+#include "utilities.c" // The functions used in SVD
 
 void
 one_sided_jacobi_SVD (matrix* A, matrix* U, matrix* D, matrix* V)

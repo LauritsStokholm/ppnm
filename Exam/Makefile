@@ -11,6 +11,11 @@ FORMAT = svg
 PLOTTER = gnuplot
 void =
 #==============================================================================#
+all: operations.$(FORMAT) results.txt
+
+results.txt: main operations.$(FORMAT)
+	./$< -n 20 -m 12
+
 # CONVERGENCE TESTS:
 # Figure
 operations.$(FORMAT): convergence_input.txt convergence_gsl_input.txt Makefile
@@ -45,9 +50,6 @@ gsl.txt: gsl_timer
 
 gsl_timer: gsl_timer.c
 
-
-results.txt: main
-	./$<
 
 main: main.c
 

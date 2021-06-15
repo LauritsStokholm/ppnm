@@ -7,7 +7,7 @@ QR_decomp (matrix* A, matrix* Q, matrix* R)
   // Setting parameters
   int n = A->size1;
   int m = A->size2;
-  double epsabs = 1e-10, epsrel = 1e-10;
+  double epsabs = 1e-8, epsrel = 1e-8;
   FILE* fp = fopen ("QR_output.txt", "w");
 
   // Allocate memory
