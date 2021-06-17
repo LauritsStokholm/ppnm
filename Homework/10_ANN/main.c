@@ -65,7 +65,6 @@ main (int argc, char **argv)
   fclose (fp); fclose (gp);
   vector_free (xvals); vector_free (yvals);
   ann_free (ann_gauss);
-  //ann_free (ann_waves);
 
   return 0;
 }

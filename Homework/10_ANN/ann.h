@@ -5,11 +5,12 @@
 typedef struct
 {
   int nneurons; // Number of neurons
-  double (*f) (double x, void* params); // Activation function
-  double (*df)(double x, void* params);
-  double (*F) (double xmin, double x, double epsabs, double epsrel, void* params);
+  double (*f)  (double x, void* params); // Activation function
+  double (*df) (double x, void* params);
+  double (*F)   (double xmin, double x, double epsabs, double epsrel, void* params);
   vector* parameters; // Neural network parameters (3 per neuron)
 } ann;
+
 
 // For supervised learning
 typedef struct
